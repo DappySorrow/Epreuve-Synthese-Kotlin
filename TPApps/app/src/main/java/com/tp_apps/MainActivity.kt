@@ -1,5 +1,7 @@
 package com.tp_apps
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -17,8 +19,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        Toast.makeText(this, "Avoir un loading ici", Toast.LENGTH_LONG).show()
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -34,5 +34,12 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+    }
+
+    //Pour qu'il puisse faire une action
+    companion object {
+        fun newIntent(context: Context): Intent {
+            return Intent(context, MainActivity::class.java)
+        }
     }
 }
