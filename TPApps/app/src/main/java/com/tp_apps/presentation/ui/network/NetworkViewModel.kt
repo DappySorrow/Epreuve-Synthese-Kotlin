@@ -1,13 +1,13 @@
-package com.tp_apps.ui.gateways
+package com.tp_apps.presentation.ui.network
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class GatewaysViewModel : ViewModel() {
+class NetworkViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is dashboard Fragment"
+        value = "This is notifications Fragment"
     }
     val text: LiveData<String> = _text
 }

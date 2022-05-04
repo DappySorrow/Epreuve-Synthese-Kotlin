@@ -1,4 +1,4 @@
-package com.tp_apps.ui.tickets
+package com.tp_apps.presentation.ui.tickets
 
 
 import androidx.lifecycle.LiveData

@@ -1,4 +1,4 @@
-package com.tp_apps.ui.splash
+package com.tp_apps.presentation.ui.splash
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

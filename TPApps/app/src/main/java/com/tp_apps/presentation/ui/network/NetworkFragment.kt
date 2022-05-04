@@ -1,4 +1,4 @@
-package com.tp_apps.ui.network
+package com.tp_apps.presentation.ui.network
 
 import android.viewbinding.library.fragment.viewBinding
 import androidx.fragment.app.Fragment
