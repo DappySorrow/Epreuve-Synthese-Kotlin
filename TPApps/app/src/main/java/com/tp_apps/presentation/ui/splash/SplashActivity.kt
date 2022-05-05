@@ -18,6 +18,7 @@ class SplashActivity : AppCompatActivity() {
 
         binding.test.setOnClickListener() {
             startActivity(MainActivity.newIntent(this))
+            this.finish()
         }
     }
 }
