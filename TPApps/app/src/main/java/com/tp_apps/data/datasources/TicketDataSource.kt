@@ -9,11 +9,12 @@ import kotlinx.coroutines.withContext
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 
+
 class TicketDataSource {
 
     private val json = Json { ignoreUnknownKeys = true }
 
-    suspend fun retrieveALL(): List<Ticket> {
+    suspend fun retrieveAll(): List<Ticket> {
 
          return withContext(Dispatchers.IO) {
             val (_, _, result) = TICKETS_URL.httpGet().responseJson()

@@ -12,13 +12,14 @@ import com.tp_apps.databinding.FragmentDetailTicketBinding
 import com.tp_apps.databinding.FragmentTicketsBinding
 import com.tp_apps.presentation.ui.capture.CaptureActivity
 
-const val ticketHref = "https://api.andromia.science/tickets/62741244ae5754003a57f263"
+
 
 class DetailTicketFragment : Fragment(R.layout.fragment_detail_ticket){
 
+    private val ticketHref = "https://api.andromia.science/tickets/62741244ae5754003a57f263"
+
     private val binding: FragmentDetailTicketBinding by viewBinding()
-    //private lateinit var binding: FragmentDetailTicketBinding
-    //private val viewModel: DetailTicketViewModel by viewModels()
+    private val viewModel: DetailTicketViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

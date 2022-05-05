@@ -14,6 +14,7 @@ object Constants {
     }
     const val TIMER_MAX = 10000L
     const val TIMER_INTERVAL = 1000L
+    const val REFRESH_TICKET_DELAY = 1000L
 
     const val FLAG_API_URL = "https://flagcdn.com/h40/%s.png"
 
