@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
     }
 
-    //Pour qu'il puisse faire une action
+    //Pour faire un intent d'une MainActivity
     companion object {
         fun newIntent(context: Context): Intent {
             return Intent(context, MainActivity::class.java)
