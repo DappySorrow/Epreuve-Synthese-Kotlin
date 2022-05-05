@@ -10,7 +10,10 @@ object Constants {
         const val CUSTOMERS = "${BASE_API}/customers"
         const val GATEWAYS = "${BASE_API}/gateways"
         const val NETWORK = "${BASE_API}/network"
+
     }
+    const val TIMER_MAX = 10000L
+    const val TIMER_INTERVAL = 1000L
 
     const val FLAG_API_URL = "https://flagcdn.com/h40/%s.png"
 
