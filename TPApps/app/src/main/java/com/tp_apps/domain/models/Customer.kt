@@ -7,7 +7,7 @@ data class Customer(
     val href: String,
     val firstName: String,
     val lastName: String,
-    //coord?
+    val coord: Coordinate,
     val email: String,
     val address: String,
     val city: String ,

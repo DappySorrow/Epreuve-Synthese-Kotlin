@@ -10,7 +10,7 @@ import com.tp_apps.domain.models.Ticket
 
 
 class TicketsRecyclerViewAdapter(var tickets: List<Ticket>,
-        /*private val onTicketItemClick: (Ticket) -> Unit*/
+        private val onTicketItemClick: (Ticket) -> Unit
 ) : RecyclerView.Adapter<TicketsRecyclerViewAdapter.ViewHolder>() {
 
     override  fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -22,9 +22,9 @@ class TicketsRecyclerViewAdapter(var tickets: List<Ticket>,
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val ticket = tickets[position]
         holder.bind(ticket)
-        /*holder.itemView.setOnClickListener{
+        holder.itemView.setOnClickListener{
             onTicketItemClick(ticket)
-        }*/
+        }
     }
 
     override fun getItemCount() = tickets.size
