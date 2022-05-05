@@ -4,4 +4,5 @@
     <string name="title_gateways">Gateways</string>
     <string name="title_network">Network</string>
     <string name="tenretni">Tenretni</string>
+    <string name="timer">Loading %s/10 ...</string>
 </resources>

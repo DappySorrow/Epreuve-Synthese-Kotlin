@@ -15,9 +15,10 @@ class SplashActivity : AppCompatActivity() {
 
     var counter = 0
 
-    val timer = object: CountDownTimer(10000, 1000) {
+    private val timer = object: CountDownTimer(10000, 1000) {
         override fun onTick(millisUntilFinished: Long) {
-            binding.txvCounter.text = (++counter).toString()
+            val counterString = (++counter).toString()
+            binding.txvCounter.text = getString(R.string.timer, counterString)
             binding.pgbLoading.setProgress(counter, true)
         }
 
