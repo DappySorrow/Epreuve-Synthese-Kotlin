@@ -5,6 +5,7 @@ object Constants {
     object BaseURL {
         //private const val BASE_API = "http://10.0.2.2:5000"
         private const val BASE_API = "https://api.andromia.science"
+        const val TICKETS_URL = "https://api.andromia.science/tickets"
         const val TICKETS = "${BASE_API}/tickets"
         const val CUSTOMERS = "${BASE_API}/customers"
         const val GATEWAYS = "${BASE_API}/gateways"

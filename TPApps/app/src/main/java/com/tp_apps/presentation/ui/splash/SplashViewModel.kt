@@ -1,16 +1,9 @@
 package com.tp_apps.presentation.ui.splash
 
 import android.os.CountDownTimer
-import androidx.core.content.ContextCompat.startActivity
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.tp_apps.MainActivity
-import com.tp_apps.R
-import com.tp_apps.core.Constants
-import kotlinx.coroutines.launch
 
 class SplashViewModel : ViewModel() {
 
