@@ -5,8 +5,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:paddingBottom="?attr/actionBarSize"
-    >
+    android:paddingBottom="?attr/actionBarSize">
 
     <androidx.cardview.widget.CardView
 
@@ -126,7 +125,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/txvNomPrenomTicket" />
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/txvVilleTicket"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="165dp"
@@ -147,6 +146,36 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_baseline_gps_fixed_24" />
+
+            <ImageView
+                android:id="@+id/imvPaysTicket"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txvVilleTicket"
+                app:srcCompat="@drawable/cad" />
+
+            <TextView
+                android:id="@+id/txvGatewaysTicket"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gateways"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imvPaysTicket" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcvGatewaysTicket"
+                android:layout_width="match_parent"
+                android:layout_height="320dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txvGatewaysTicket"
+                tools:layout_editor_absoluteX="1dp" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
