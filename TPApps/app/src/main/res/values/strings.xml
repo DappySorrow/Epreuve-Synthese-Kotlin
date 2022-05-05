@@ -3,6 +3,15 @@
     <string name="title_tickets">Tickets</string>
     <string name="title_gateways">Gateways</string>
     <string name="title_network">Network</string>
+    <!-- ======================================== -->
     <string name="tenretni">Tenretni</string>
     <string name="timer">Loading %s/10 ...</string>
+    <string name="names">Jean-Simon Barbeau, Olivier Mathieu-Grégoire &amp; Benjamin Lemire</string>
+    <string name="loading_template">Loading 0/10 ...</string>
+    <string name="skip">Skip</string>
+    <string name="trademark">Tenretni - 2021®</string>
+    <!-- ======================================== -->
+
+
+
 </resources>

@@ -3,10 +3,10 @@ package com.tp_apps.presentation.ui.splash
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.view.View
-import android.widget.Toast
 import com.tp_apps.MainActivity
 import com.tp_apps.R
+import com.tp_apps.core.Constants.TIMER_INTERVAL
+import com.tp_apps.core.Constants.TIMER_MAX
 import com.tp_apps.databinding.ActivitySplashBinding
 
 class SplashActivity : AppCompatActivity() {
@@ -15,10 +15,9 @@ class SplashActivity : AppCompatActivity() {
 
     var counter = 0
 
-    private val timer = object: CountDownTimer(10000, 1000) {
+    private val timer = object: CountDownTimer(TIMER_MAX, TIMER_INTERVAL) {
         override fun onTick(millisUntilFinished: Long) {
-            val counterString = (++counter).toString()
-            binding.txvCounter.text = getString(R.string.timer, counterString)
+            binding.txvCounter.text = getString(R.string.timer, (++counter).toString())
             binding.pgbLoading.setProgress(counter, true)
         }
 
