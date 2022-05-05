@@ -3,10 +3,14 @@ package com.tp_apps.presentation.ui.tickets
 import android.os.Bundle
 import android.view.View
 import android.viewbinding.library.fragment.viewBinding
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.tp_apps.R
 import com.tp_apps.databinding.FragmentTicketsBinding
+import com.tp_apps.helpers.LoadingResource
+/*import com.tp_apps.presentation.adapters.TicketsRecyclerViewAdapter*/
+
 /*import com.tp_apps.presentation.adapters.TicketsRecyclerViewAdapter*/
 
 class TicketsFragment : Fragment(R.layout.fragment_tickets) {
@@ -23,6 +27,19 @@ class TicketsFragment : Fragment(R.layout.fragment_tickets) {
             adapter =
         }*/
 
+        viewModel.tickets.observe(viewLifecycleOwner) {
+            when(it){
+                is LoadingResource.Error -> {
+                    Toast.makeText(requireContext(), getString(R.string.error), Toast.LENGTH_LONG).show()
+                }
+                is LoadingResource.Loading -> {
+                    binding.rcvTickets.visibility = View.INVISIBLE
+                }
+                is LoadingResource.Success -> {
+                    binding.rcvTickets.visibility = View.VISIBLE
+                }
+            }
+        }
 
     }
 
