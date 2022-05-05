@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/navigation_tickets"
-        android:name="com.tp_apps.ui.tickets.TicketsFragment"
+        android:name="com.tp_apps.presentation.ui.tickets.TicketsFragment"
         android:label="@string/title_tickets"
         tools:layout="@layout/fragment_tickets" />
 
     <fragment
         android:id="@+id/navigation_gateways"
-        android:name="com.tp_apps.ui.gateways.GatewaysFragment"
+        android:name="com.tp_apps.presentation.ui.gateways.GatewaysFragment"
         android:label="@string/title_gateways"
         tools:layout="@layout/fragment_gateways" />
 
     <fragment
         android:id="@+id/navigation_network"
-        android:name="com.tp_apps.ui.network.NetworkFragment"
+        android:name="com.tp_apps.presentation.ui.network.NetworkFragment"
         android:label="@string/title_network"
         tools:layout="@layout/fragment_network" />
 </navigation>

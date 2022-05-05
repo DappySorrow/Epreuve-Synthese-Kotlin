@@ -11,7 +11,7 @@
         android:theme="@style/Theme.TPApps">
 
         <activity
-            android:name=".ui.splash.SplashActivity"
+            android:name=".presentation.ui.splash.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
