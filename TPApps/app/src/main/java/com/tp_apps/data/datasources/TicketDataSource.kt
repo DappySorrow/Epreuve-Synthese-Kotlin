@@ -2,6 +2,7 @@ package com.tp_apps.data.datasources
 
 import com.github.kittinunf.fuel.httpGet
 import com.github.kittinunf.fuel.json.responseJson
+import com.github.kittinunf.result.Result
 import com.tp_apps.helpers.Constants.BaseURL.TICKETS_URL
 import com.tp_apps.domain.models.Ticket
 import kotlinx.coroutines.Dispatchers
@@ -28,4 +29,20 @@ class TicketDataSource {
             }
         }
     }
+
+    suspend fun retrieveOne(href: String) : Ticket {
+        return withContext(Dispatchers.IO){
+            val (_,_,result) = href.httpGet().responseJson()
+            when(result){
+                is Result.Success -> {
+                    return@withContext json.decodeFromString<Ticket>(result.value.content)
+                }
+                is Result.Failure -> {
+                    throw result.error.exception
+                }
+            }
+        }
+    }
+
+
 }

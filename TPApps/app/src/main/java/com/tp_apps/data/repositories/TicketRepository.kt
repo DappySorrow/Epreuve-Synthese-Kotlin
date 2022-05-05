@@ -4,6 +4,7 @@ import com.tp_apps.data.datasources.TicketDataSource
 import com.tp_apps.domain.models.Ticket
 import com.tp_apps.helpers.Constants
 import com.tp_apps.helpers.LoadingResource
+import com.tp_apps.helpers.Resource
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -27,13 +28,13 @@ class TicketRepository {
         }
     }
 
-    /*
-    return try {
-            LoadingResource.Loading()
-            LoadingResource.Success(ticketDataSource.retrieveALL())
-        } catch (ex: Exception) {
-            LoadingResource.Error(ex)
+    suspend fun retrieveOne(href: String) : Resource<Ticket> {
+        return try {
+            Resource.Success(ticketDataSource.retrieveOne(href))
+        }catch (ex:Exception){
+            Resource.Error(ex,ex.message)
         }
-    * */
+    }
+
 
 }

@@ -5,7 +5,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:paddingBottom="?attr/actionBarSize">
+    >
 
     <androidx.cardview.widget.CardView
 
@@ -29,7 +29,7 @@
             android:id="@+id/txvTicket"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
+            android:layout_marginStart="60dp"
             android:layout_marginTop="16dp"
             android:textSize="24sp"
             android:text="Ticket"
@@ -40,7 +40,7 @@
             android:id="@+id/txvTicketId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="120dp"
+            android:layout_marginStart="130dp"
             android:layout_marginTop="16dp"
             android:textSize="24sp"
             tools:text="Ticket number"
@@ -53,7 +53,7 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txvTicketId"
-                android:layout_marginStart="70dp"
+                android:layout_marginStart="120dp"
                 tools:text="2021-04-23 13:44" />
 
             <com.google.android.material.chip.Chip
@@ -87,20 +87,21 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="0dp"
-        android:layout_height="520dp"
+        android:layout_height="0dp"
         android:layout_margin="4dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         app:cardCornerRadius="10dp"
         app:cardElevation="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonInstall"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/topTxview">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_height="match_parent"
-            android:layout_width="match_parent">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/txvNomPrenomTicket"
@@ -171,11 +172,12 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rcvGatewaysTicket"
                 android:layout_width="match_parent"
-                android:layout_height="320dp"
+                android:layout_height="250dp"
                 android:layout_marginTop="8dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txvGatewaysTicket"
-                tools:layout_editor_absoluteX="1dp" />
+                app:layout_constraintVertical_bias="0.514"
+                tools:layout_editor_absoluteX="0dp" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -186,20 +188,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="70dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:text="INSTALL"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/buttonSolve"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:text="SOLVE"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/buttonInstall"
-        app:layout_constraintTop_toBottomOf="@+id/cardView" />
+        app:layout_constraintStart_toEndOf="@+id/buttonInstall" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

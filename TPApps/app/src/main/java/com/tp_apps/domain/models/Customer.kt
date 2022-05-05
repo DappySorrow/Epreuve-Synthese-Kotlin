@@ -12,7 +12,6 @@ data class Customer(
     val address: String,
     val city: String ,
     val country: String,
-    val postalCode: String,
+    val postalCode: String = "",
     val phone: String,
-    val gateways: List<Gateway>
 )
