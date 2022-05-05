@@ -11,9 +11,8 @@
     <string name="skip">Skip</string>
     <string name="trademark">Tenretni - 2022®</string>
     <string name="quickie">Quickie</string>
-    <string name="error">error</string>
     <!-- ======================================== -->
-
+    <string name="error">Impossible de charger les données</string>
 
 
 </resources>
