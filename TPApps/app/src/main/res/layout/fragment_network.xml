@@ -7,4 +7,44 @@
     tools:context=".presentation.ui.network.NetworkFragment">
 
 
+    <ImageView
+        android:id="@+id/imvTenretni"
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        android:src="@drawable/tenretni"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txvNextReboot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Next reboot at : 2021-04-23 15:10"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imvTenretni" />
+
+    <TextView
+        android:id="@+id/txvLastUpdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Last update : 2021-04-23 15:05"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvNextReboot" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginVertical="8dp"
+        android:id="@+id/rcvReseau"
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
+        android:layout_marginTop="1dp"
+        app:layout_constraintTop_toBottomOf="@+id/txvLastUpdate"
+        tools:layout_editor_absoluteX="1dp" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
