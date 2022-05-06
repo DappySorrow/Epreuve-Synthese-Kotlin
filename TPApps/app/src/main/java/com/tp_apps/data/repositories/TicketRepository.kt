@@ -13,18 +13,16 @@ class TicketRepository {
 
     private val ticketDataSource = TicketDataSource()
 
-    suspend fun retrieveAll(): Flow<LoadingResource<List<Ticket>>> {
-        return flow {
+    suspend fun retrieveAll(): LoadingResource<List<Ticket>> {
             while(true) {
                 try {
-                    emit(LoadingResource.Loading())
+                    LoadingResource.Loading()
                     //delay(1500)
-                    emit(LoadingResource.Success(ticketDataSource.retrieveAll()))
+                    LoadingResource.Success(ticketDataSource.retrieveAll())
                 } catch (ex: Exception) {
-                    emit(LoadingResource.Error(ex, ex.message))
+                    LoadingResource.Error(ex, ex.message)
                 }
                 delay(Constants.REFRESH_TICKET_DELAY)
-            }
         }
     }
 

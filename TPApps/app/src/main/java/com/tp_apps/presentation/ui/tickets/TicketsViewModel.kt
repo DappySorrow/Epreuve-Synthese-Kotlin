@@ -20,7 +20,7 @@ class TicketsViewModel : ViewModel() {
 
     init {
         viewModelScope.launch {
-           /* _tickets.value = ticketRepository.retrieveAll()*/
+            _tickets.value = ticketRepository.retrieveAll()
         }
     }
 

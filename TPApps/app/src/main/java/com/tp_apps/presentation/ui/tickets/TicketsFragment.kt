@@ -43,7 +43,6 @@ class TicketsFragment : Fragment(R.layout.fragment_tickets) {
                     binding.rcvTickets.visibility = View.INVISIBLE
                 }
                 is LoadingResource.Success -> {
-
                     ticketsRecyclerViewAdapter.tickets = it.data!!
                     ticketsRecyclerViewAdapter.notifyAllItemChanged()
                     binding.rcvTickets.visibility = View.VISIBLE
