@@ -24,11 +24,11 @@ import com.tp_apps.presentation.ui.capture.CaptureActivity
 
 class DetailTicketFragment : Fragment(R.layout.fragment_detail_ticket){
 
-    private val ticketHref = "https://api.andromia.science/tickets/6261f1a4ae5754003a57ecf6"
+    //private val ticketHref = "https://api.andromia.science/tickets/6261f1a4ae5754003a57ecf6"
 
     private val binding: FragmentDetailTicketBinding by viewBinding()
     private val viewModel: DetailTicketViewModel by viewModels {
-        DetailTicketViewModel.Factory(ticketHref)
+        DetailTicketViewModel.Factory(args.href)
     }
 
 
