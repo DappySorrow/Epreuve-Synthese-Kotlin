@@ -1,6 +1,8 @@
 package com.tp_apps.presentation.ui.gateways
 
 import android.os.Bundle
+import android.util.Log
+import android.util.Log.DEBUG
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,11 +30,12 @@ class GatewaysFragment : Fragment(R.layout.fragment_gateways) {
 
         gatewaysViewAdapter = GatewaysViewAdapter(listOf())
 
-        viewModel.gateways.observe(viewLifecycleOwner){
+        viewModel.gateways.observe(viewLifecycleOwner) {
 
-            when(it) {
+            when (it) {
                 is LoadingResource.Error -> {
                     Toast.makeText(requireContext(), it.message, Toast.LENGTH_LONG).show()
+                    Log.e("test", it.message!!)
                 }
                 is LoadingResource.Success -> {
                     Toast.makeText(requireContext(), "Success", Toast.LENGTH_LONG).show()
@@ -43,10 +46,6 @@ class GatewaysFragment : Fragment(R.layout.fragment_gateways) {
             }
 
         }
-
-
-
-
 
 
     }

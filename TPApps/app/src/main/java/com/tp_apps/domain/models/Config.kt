@@ -8,5 +8,5 @@ data class Config(
     val SSID: String = "",
     val version: String = "",
     val kernel: List<String> = listOf(),
-    val kernelRevision: String = ""
+    val kernelRevision: Int = 0
 )

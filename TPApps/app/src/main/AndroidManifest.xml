@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TPApps">
         <activity
-            android:name=".ItemGateways"
+            android:name=".presentation.ui.gateways.ItemGateways"
             android:exported="false" />
         <activity
             android:name=".presentation.ui.splash.SplashActivity"
