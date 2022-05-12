@@ -14,7 +14,7 @@ class NetworkDataSource {
 
     private val json = Json { ignoreUnknownKeys = true }
 
-    suspend fun retrieveAll() : List<Network>{
+    suspend fun retrieveAll() : Network{
         return withContext(Dispatchers.IO) {
             val(_,_,result) = Constants.BaseURL.NETWORK.httpGet().responseJson()
             when(result){

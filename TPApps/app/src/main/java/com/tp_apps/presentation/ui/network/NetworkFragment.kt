@@ -10,7 +10,9 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.tp_apps.R
 import com.tp_apps.databinding.FragmentNetworkBinding
+import com.tp_apps.helpers.DateHelper
 import com.tp_apps.helpers.LoadingResource
+import com.tp_apps.helpers.notifyAllItemChanged
 import com.tp_apps.presentation.adapters.NetworksRecyclerViewAdapter
 
 class NetworkFragment : Fragment(R.layout.fragment_network) {
@@ -39,7 +41,10 @@ class NetworkFragment : Fragment(R.layout.fragment_network) {
 
                 }
                 is LoadingResource.Success -> {
-                   // networksRecyclerViewAdapter.networkNodes = it.data!!
+                    binding.txvDateReboot.text = DateHelper.formatISODate(it.data!!.nextReboot)
+                    binding.txvDateLastUpdate.text = DateHelper.formatISODate(it.data!!.updateDate)
+                    networksRecyclerViewAdapter.networkNodes = it.data!!.nodes
+                    networksRecyclerViewAdapter.notifyAllItemChanged()
                 }
             }
         }

@@ -13,7 +13,7 @@ class NetworkRepository {
 
     private val networkDataSource = NetworkDataSource()
 
-    suspend fun retrieveAll() : Flow<LoadingResource<List<Network>>>{
+    suspend fun retrieveAll() : Flow<LoadingResource<Network>>{
         return flow {
             while (true){
                 try {
@@ -22,9 +22,8 @@ class NetworkRepository {
                 } catch(ex : Exception){
                     emit(LoadingResource.Error(ex,ex.message))
                 }
-                delay(Constants.REFRESH_NETWORK_DELAY)
+                //delay(Constants.REFRESH_NETWORK_DELAY)
             }
         }
     }
-
 }

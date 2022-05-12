@@ -31,16 +31,16 @@ class NetworksRecyclerViewAdapter(var networkNodes: List<NetworkNode> = listOf()
 
         fun bind(networkNodes : NetworkNode){
             binding.txvNomNoeud.text = networkNodes.name
-            binding.txvAdresseIP.text = networkNodes.connectionNode.ip
-            binding.txvDownload.text = networkNodes.connectionNode.download.toString()
-            binding.txvLatence.text = networkNodes.connectionNode.download.toString()
-            binding.txvLatence.text = networkNodes.connectionNode.ping.toString()
-            binding.txvUpload.text = networkNodes.connectionNode.upload.toString()
-            binding.txvQualiteSignal.text = networkNodes.connectionNode.signal.toString()
+            binding.txvAdresseIP.text = networkNodes.connection.ip
+
+            binding.txvDownload.text = "${networkNodes.connection.download.toString()} Ebps"
+            binding.txvLatence.text = "${networkNodes.connection.ping.toString()} ns"
+            binding.txvUpload.text = "${networkNodes.connection.upload.toString()} Ebps"
+            binding.txvQualiteSignal.text = "${networkNodes.connection.signal.toString()} dBm"
 
 
-            binding.chipHaut.text = networkNodes.connectionNode.status
-            binding.chipHaut.chipBackgroundColor = ColorHelper.connectionStatusColor(binding.root.context,networkNodes.connectionNode.status)
+            binding.chipHaut.text = networkNodes.connection.status
+            binding.chipHaut.chipBackgroundColor = ColorHelper.connectionStatusColor(binding.root.context,networkNodes.connection.status)
 
 
 

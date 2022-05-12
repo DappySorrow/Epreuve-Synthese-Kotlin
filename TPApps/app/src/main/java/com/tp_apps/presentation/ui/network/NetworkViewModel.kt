@@ -14,8 +14,8 @@ class NetworkViewModel : ViewModel() {
 
    private val networkRepository = NetworkRepository()
 
-    private val _networks = MutableLiveData<LoadingResource<List<Network>>>()
-    val networks : LiveData<LoadingResource<List<Network>>> get() = _networks
+    private val _networks = MutableLiveData<LoadingResource<Network>>()
+    val networks : LiveData<LoadingResource<Network>> get() = _networks
 
     init {
         viewModelScope.launch {
