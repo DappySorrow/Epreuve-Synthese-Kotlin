@@ -13,6 +13,7 @@ import com.tp_apps.databinding.FragmentGatewaysBinding
 import com.tp_apps.helpers.LoadingResource
 import com.tp_apps.helpers.notifyAllItemChanged
 import com.tp_apps.presentation.adapters.GatewaysRecyclerViewAdapter
+import kotlinx.coroutines.delay
 
 class GatewaysFragment : Fragment(R.layout.fragment_gateways) {
 

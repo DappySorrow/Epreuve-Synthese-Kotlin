@@ -12,6 +12,9 @@ object Constants {
         const val NETWORK = "${BASE_API}/network"
 
     }
+
+    const val GATEWAY_REFRESH = 60000L
+    const val GATEWAY_LOADING = 1000L
     const val TIMER_MAX = 10000L
     const val TIMER_INTERVAL = 1000L
     const val REFRESH_TICKET_DELAY = 30000L

@@ -1,5 +1,6 @@
 package com.tp_apps.presentation.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +17,7 @@ class GatewaysRecyclerViewAdapter(var gateways : List<Gateway> = listOf()) :
         fun bind(gateway: Gateway) {
 
             val status = gateway.connection.status
+            Log.e("test", status)
 
             if (status == "Online")
             {

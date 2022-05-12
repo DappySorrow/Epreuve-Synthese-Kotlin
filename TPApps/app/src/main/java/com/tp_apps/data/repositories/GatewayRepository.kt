@@ -10,6 +10,7 @@ import com.github.kittinunf.fuel.json.FuelJson
 import com.github.kittinunf.fuel.json.responseJson
 import com.github.kittinunf.result.success
 import com.tp_apps.data.datasources.GatewayDataSource
+import com.tp_apps.helpers.Constants.GATEWAY_REFRESH
 import com.tp_apps.helpers.LoadingResource
 import com.tp_apps.helpers.Resource
 import kotlinx.coroutines.delay
@@ -25,11 +26,12 @@ class GatewayRepository {
             while (true) {
                 try {
                     emit(LoadingResource.Loading())
+                    delay(Constants.GATEWAY_LOADING)
                     emit(LoadingResource.Success(gatewayDataSource.retrieveAll()))
                 } catch (ex: Exception) {
                     emit(LoadingResource.Error(ex, ex.message))
                 }
-                delay(60000)
+                delay(GATEWAY_REFRESH)
             }
         }
     }
