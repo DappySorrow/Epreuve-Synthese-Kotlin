@@ -12,10 +12,13 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.tp_apps.R
 import com.tp_apps.databinding.FragmentGatewaysBinding
 import com.tp_apps.databinding.FragmentTicketsBinding
 import com.tp_apps.helpers.LoadingResource
+import com.tp_apps.helpers.notifyAllItemChanged
 import com.tp_apps.presentation.adapters.GatewaysViewAdapter
 
 class GatewaysFragment : Fragment(R.layout.fragment_gateways) {
@@ -29,6 +32,10 @@ class GatewaysFragment : Fragment(R.layout.fragment_gateways) {
         super.onViewCreated(view, savedInstanceState)
 
         gatewaysViewAdapter = GatewaysViewAdapter(listOf())
+        binding.rcvGateways.apply {
+            layoutManager = GridLayoutManager(requireContext(),2)
+            adapter = gatewaysViewAdapter
+        }
 
         viewModel.gateways.observe(viewLifecycleOwner) {
 
@@ -38,10 +45,14 @@ class GatewaysFragment : Fragment(R.layout.fragment_gateways) {
                     Log.e("test", it.message!!)
                 }
                 is LoadingResource.Success -> {
-                    Toast.makeText(requireContext(), "Success", Toast.LENGTH_LONG).show()
+                    binding.pgbLoading.hide()
+                    gatewaysViewAdapter.gateways = it.data!!
+                    gatewaysViewAdapter.notifyAllItemChanged()
+                    binding.rcvGateways.visibility = View.VISIBLE
                 }
                 is LoadingResource.Loading -> {
-                    Toast.makeText(requireContext(), "Loading", Toast.LENGTH_LONG).show()
+                    binding.pgbLoading.show()
+                    binding.rcvGateways.visibility = View.INVISIBLE
                 }
             }
 

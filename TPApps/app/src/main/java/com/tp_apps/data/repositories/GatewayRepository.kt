@@ -33,14 +33,4 @@ class GatewayRepository {
             }
         }
     }
-
-    //Cette méthode ne retourne pas un flow
-    suspend fun retrieve(href: String): Resource<Gateway> {
-        return try {
-            Resource.Success(gatewayDataSource.retrieve(href))
-        } catch (ex: Exception) {
-            Resource.Error(ex, ex.message)
-        }
-    }
-
 }

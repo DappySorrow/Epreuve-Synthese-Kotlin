@@ -21,7 +21,7 @@ class GatewaysViewModel : ViewModel() {
         refreshGateways()
     }
 
-    fun refreshGateways() {
+    private fun refreshGateways() {
         viewModelScope.launch {
             gatewayRepository.retrieveAll().collect {
                 _gateways.value = it
