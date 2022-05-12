@@ -9,15 +9,15 @@ import com.tp_apps.databinding.ItemGatewaysBinding
 import com.tp_apps.domain.models.Gateway
 import com.tp_apps.helpers.ColorHelper
 
-class GatewaysRecyclerViewAdapter(var gateways : List<Gateway> = listOf()) :
-    RecyclerView.Adapter<GatewaysRecyclerViewAdapter.ViewHolder>() {
+class GatewaysRecyclerViewAdapter(
+    var gateways : List<Gateway> = listOf(),
+    private val onGatewayClick: (Gateway) -> Unit) : RecyclerView.Adapter<GatewaysRecyclerViewAdapter.ViewHolder>(){
 
     inner class ViewHolder(private val binding: ItemGatewaysBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(gateway: Gateway) {
 
             val status = gateway.connection.status
-            Log.e("test", status)
 
             if (status == "Online")
             {
@@ -52,6 +52,10 @@ class GatewaysRecyclerViewAdapter(var gateways : List<Gateway> = listOf()) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val gateway = gateways[position]
         holder.bind(gateway)
+
+        holder.itemView.setOnClickListener {
+            onGatewayClick(gateway)
+        }
     }
 
     override fun getItemCount()= gateways.size

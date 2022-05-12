@@ -7,9 +7,11 @@ import android.viewbinding.library.fragment.viewBinding
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.tp_apps.R
 import com.tp_apps.databinding.FragmentGatewaysBinding
+import com.tp_apps.domain.models.Gateway
 import com.tp_apps.helpers.LoadingResource
 import com.tp_apps.helpers.notifyAllItemChanged
 import com.tp_apps.presentation.adapters.GatewaysRecyclerViewAdapter
@@ -25,7 +27,7 @@ class GatewaysFragment : Fragment(R.layout.fragment_gateways) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        gatewaysRecyclerViewAdapter = GatewaysRecyclerViewAdapter(listOf())
+        gatewaysRecyclerViewAdapter = GatewaysRecyclerViewAdapter(listOf(), ::onRecyclerViewGatewayClick)
         binding.rcvGateways.apply {
             layoutManager = GridLayoutManager(requireContext(),2)
             adapter = gatewaysRecyclerViewAdapter
@@ -55,4 +57,12 @@ class GatewaysFragment : Fragment(R.layout.fragment_gateways) {
 
     }
 
+    //Quand on clic sur un gateway
+    private fun onRecyclerViewGatewayClick(gateway: Gateway) {
+        Toast.makeText(requireContext(), gateway.serialNumber, Toast.LENGTH_LONG).show()
+        //val direction = GatewaysFragmentDirections.actionNavListPlanetToNavPlanet(gateway.href)
+        //findNavController().navigate(direction)
+
+
+    }
 }
