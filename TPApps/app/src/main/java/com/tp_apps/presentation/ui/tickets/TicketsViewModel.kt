@@ -21,7 +21,7 @@ class TicketsViewModel : ViewModel() {
     init {
         viewModelScope.launch {
             ticketRepository.retrieveAll().collect{
-                _tickets.value
+                _tickets.value = it
             }
         }
     }

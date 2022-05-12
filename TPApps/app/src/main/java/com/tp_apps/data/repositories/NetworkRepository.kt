@@ -22,7 +22,7 @@ class NetworkRepository {
                 } catch(ex : Exception){
                     emit(LoadingResource.Error(ex,ex.message))
                 }
-                //delay(Constants.REFRESH_NETWORK_DELAY)
+                delay(Constants.REFRESH_NETWORK_DELAY)
             }
         }
     }
