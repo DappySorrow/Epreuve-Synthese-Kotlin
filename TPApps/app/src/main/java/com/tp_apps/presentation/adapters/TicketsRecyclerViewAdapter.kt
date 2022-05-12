@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.tp_apps.R
 import com.tp_apps.databinding.ItemTicketBinding
 import com.tp_apps.domain.models.Ticket
+import com.tp_apps.helpers.ColorHelper
+import com.tp_apps.helpers.DateHelper
 
 
 class TicketsRecyclerViewAdapter(var tickets: List<Ticket> = listOf(),
@@ -34,6 +36,10 @@ class TicketsRecyclerViewAdapter(var tickets: List<Ticket> = listOf(),
         fun bind(ticket: Ticket) {
             binding.txvTicketId.text = ticket.ticketNumber
             binding.chipBas.text = ticket.status
+            binding.chipBas.chipBackgroundColor = ColorHelper.ticketStatusColor(binding.root.context,ticket.status)
+            binding.chipHaut.text = ticket.priority
+            binding.chipHaut.chipBackgroundColor = ColorHelper.ticketPriorityColor(binding.root.context, ticket.priority)
+            binding.txvTicketDate.text = DateHelper.formatISODate(ticket.createdDate)
         }
     }
 
