@@ -9,13 +9,12 @@ import com.tp_apps.databinding.ItemTicketBinding
 import com.tp_apps.domain.models.Ticket
 
 
-class TicketsRecyclerViewAdapter(var tickets: List<Ticket>,
+class TicketsRecyclerViewAdapter(var tickets: List<Ticket> = listOf(),
         private val onTicketItemClick: (Ticket) -> Unit
 ) : RecyclerView.Adapter<TicketsRecyclerViewAdapter.ViewHolder>() {
 
     override  fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_ticket, parent, false)
-        return ViewHolder(view)
+        return ViewHolder(ItemTicketBinding.inflate(LayoutInflater.from(parent.context),parent,false))
     }
 
 
@@ -30,8 +29,7 @@ class TicketsRecyclerViewAdapter(var tickets: List<Ticket>,
     override fun getItemCount() = tickets.size
 
 
-    inner class ViewHolder(val view: View) :RecyclerView.ViewHolder(view) {
-        private val binding = ItemTicketBinding.bind(view)
+    inner class ViewHolder(private val binding: ItemTicketBinding) :RecyclerView.ViewHolder(binding.root) {
 
         fun bind(ticket: Ticket) {
             binding.txvTicketId.text = ticket.ticketNumber
