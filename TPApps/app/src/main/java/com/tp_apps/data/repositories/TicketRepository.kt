@@ -13,7 +13,9 @@ class TicketRepository {
 
     private val ticketDataSource = TicketDataSource()
 
-    suspend fun retrieveAll(): LoadingResource<List<Ticket>> {
+    //FLOW = EMIT MUST HAVE RETURN -Yannick
+    fun retrieveAll(): Flow<LoadingResource<List<Ticket>>> {
+        /*
             while(true) {
                 try {
                     LoadingResource.Loading()
@@ -23,14 +25,28 @@ class TicketRepository {
                     LoadingResource.Error(ex, ex.message)
                 }
                 delay(Constants.REFRESH_TICKET_DELAY)
+*/
+
+        return flow {
+            while (true) {
+                try {
+                    emit(LoadingResource.Loading())
+                    emit(LoadingResource.Success(ticketDataSource.retrieveAll()))
+                } catch (ex: Exception) {
+                    emit(LoadingResource.Error(ex, ex.message))
+                }
+                delay(Constants.REFRESH_TICKET_DELAY)
+            }
         }
+
+
     }
 
-    suspend fun retrieveOne(href: String) : Resource<Ticket> {
+    suspend fun retrieveOne(href: String): Resource<Ticket> {
         return try {
             Resource.Success(ticketDataSource.retrieveOne(href))
-        }catch (ex:Exception){
-            Resource.Error(ex,ex.message)
+        } catch (ex: Exception) {
+            Resource.Error(ex, ex.message)
         }
     }
 

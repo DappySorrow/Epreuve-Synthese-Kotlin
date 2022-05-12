@@ -40,16 +40,17 @@ class TicketsFragment : Fragment(R.layout.fragment_tickets) {
                     Toast.makeText(requireContext(), getString(R.string.error), Toast.LENGTH_LONG).show()
                 }
                 is LoadingResource.Loading -> {
+
                     binding.rcvTickets.visibility = View.INVISIBLE
                 }
                 is LoadingResource.Success -> {
+                    Toast.makeText(requireContext(),"Success",Toast.LENGTH_SHORT).show()
                     ticketsRecyclerViewAdapter.tickets = it.data!!
                     ticketsRecyclerViewAdapter.notifyAllItemChanged()
                     binding.rcvTickets.visibility = View.VISIBLE
                 }
             }
         }
-
     }
 
     private fun onTicketItemClick(ticket: Ticket) {

@@ -46,6 +46,7 @@ class DetailTicketFragment : Fragment(R.layout.fragment_detail_ticket){
                     requireActivity().supportFragmentManager.popBackStack()
                 }
                 is Resource.Success -> {
+
                     val ticket = it.data!!
 
                     binding.txvTicketId.text = ticket.ticketNumber

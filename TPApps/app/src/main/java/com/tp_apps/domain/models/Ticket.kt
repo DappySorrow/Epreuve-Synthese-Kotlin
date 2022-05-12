@@ -2,7 +2,7 @@ package com.tp_apps.domain.models
 
 import kotlinx.serialization.Serializable
 
-@Serializable
+//@Serializable
 data class Ticket(
     val href: String,
     val status: String,
