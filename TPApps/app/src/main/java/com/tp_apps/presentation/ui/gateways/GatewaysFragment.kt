@@ -51,10 +51,7 @@ class GatewaysFragment : Fragment(R.layout.fragment_gateways) {
                     binding.rcvGateways.visibility = View.INVISIBLE
                 }
             }
-
         }
-
-
     }
 
     //Quand on clic sur un gateway
