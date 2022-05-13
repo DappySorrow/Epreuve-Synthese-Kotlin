@@ -172,12 +172,16 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rcvGatewaysTicket"
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:layout_marginTop="8dp"
+                android:layout_height="0dp"
+
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txvGatewaysTicket"
-                app:layout_constraintVertical_bias="0.514"
-                tools:layout_editor_absoluteX="0dp" />
+
+                tools:listitem="@layout/item_gateways"
+                tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                tools:spanCount="2"/>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
