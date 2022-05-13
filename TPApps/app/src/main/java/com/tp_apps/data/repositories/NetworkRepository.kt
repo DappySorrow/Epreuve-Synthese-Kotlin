@@ -18,6 +18,7 @@ class NetworkRepository {
             while (true){
                 try {
                     emit(LoadingResource.Loading())
+                    delay(2000)
                     emit(LoadingResource.Success(networkDataSource.retrieveAll()))
                 } catch(ex : Exception){
                     emit(LoadingResource.Error(ex,ex.message))

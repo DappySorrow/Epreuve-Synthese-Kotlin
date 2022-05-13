@@ -6,6 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".presentation.ui.network.NetworkFragment">
 
+    <androidx.core.widget.ContentLoadingProgressBar
+        android:id="@+id/pgbLoading"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:indeterminateTint="@android:color/holo_blue_dark"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imvTenretni"
