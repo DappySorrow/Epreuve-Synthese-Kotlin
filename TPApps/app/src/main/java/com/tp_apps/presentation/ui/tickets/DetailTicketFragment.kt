@@ -8,35 +8,45 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
 import com.tp_apps.MainActivity
 import com.tp_apps.R
 import com.tp_apps.databinding.FragmentDetailTicketBinding
 import com.tp_apps.databinding.FragmentTicketsBinding
+import com.tp_apps.domain.models.Gateway
 import com.tp_apps.helpers.ColorHelper.ticketPriorityColor
 import com.tp_apps.helpers.ColorHelper.ticketStatusColor
 import com.tp_apps.helpers.Constants
 import com.tp_apps.helpers.DateHelper
 import com.tp_apps.helpers.Resource
+import com.tp_apps.helpers.notifyAllItemChanged
+import com.tp_apps.presentation.adapters.GatewaysRecyclerViewAdapter
 import com.tp_apps.presentation.ui.capture.CaptureActivity
 
 
 
 class DetailTicketFragment : Fragment(R.layout.fragment_detail_ticket){
 
-    //private val ticketHref = "https://api.andromia.science/tickets/6261f1a4ae5754003a57ecf6"
-
     private val binding: FragmentDetailTicketBinding by viewBinding()
     private val viewModel: DetailTicketViewModel by viewModels {
         DetailTicketViewModel.Factory(args.href)
     }
 
+    private lateinit var gatewaysRecyclerViewAdapter : GatewaysRecyclerViewAdapter
 
-    /* a utilisé plus tard quand le ticket sera set   */
     private val args : DetailTicketFragmentArgs by navArgs()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        gatewaysRecyclerViewAdapter = GatewaysRecyclerViewAdapter(listOf(), ::onRecyclerViewGatewayClick)
+
+        binding.rcvGatewaysTicket.apply {
+            layoutManager = GridLayoutManager(requireContext(),2)
+            adapter = gatewaysRecyclerViewAdapter
+        }
+
 
         viewModel.ticket.observe(viewLifecycleOwner){
             when(it){
@@ -48,6 +58,9 @@ class DetailTicketFragment : Fragment(R.layout.fragment_detail_ticket){
                 is Resource.Success -> {
 
                     val ticket = it.data!!
+
+                    gatewaysRecyclerViewAdapter.gateways = it.data.customer.listGateway
+                    gatewaysRecyclerViewAdapter.notifyAllItemChanged()
 
                     binding.txvTicketId.text = ticket.ticketNumber
                     binding.txvTicketDate.text = DateHelper.formatISODate(ticket.createdDate)
@@ -83,6 +96,12 @@ class DetailTicketFragment : Fragment(R.layout.fragment_detail_ticket){
 
     }
 
+    private fun onRecyclerViewGatewayClick(gateway: Gateway) {
+        Toast.makeText(requireContext(), gateway.serialNumber, Toast.LENGTH_LONG).show()
+        //val direction = GatewaysFragmentDirections.actionNavListPlanetToNavPlanet(gateway.href)
+        //findNavController().navigate(direction)
 
+
+    }
 
 }
