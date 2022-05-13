@@ -26,16 +26,16 @@ import io.github.g00fy2.quickie.ScanCustomCode
 import io.github.g00fy2.quickie.ScanQRCode
 
 
-class DetailTicketFragment : Fragment(R.layout.fragment_detail_ticket){
+class DetailTicketFragment : Fragment(R.layout.fragment_detail_ticket) {
 
     private val binding: FragmentDetailTicketBinding by viewBinding()
     private val viewModel: DetailTicketViewModel by viewModels {
         DetailTicketViewModel.Factory(args.href)
     }
 
-    private lateinit var gatewaysRecyclerViewAdapter : GatewaysRecyclerViewAdapter
+    private lateinit var gatewaysRecyclerViewAdapter: GatewaysRecyclerViewAdapter
 
-    private val args : DetailTicketFragmentArgs by navArgs()
+    private val args: DetailTicketFragmentArgs by navArgs()
 
     //----------------------------------------------------------------------------------------------------------
 
@@ -47,19 +47,21 @@ class DetailTicketFragment : Fragment(R.layout.fragment_detail_ticket){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        gatewaysRecyclerViewAdapter = GatewaysRecyclerViewAdapter(listOf(), ::onRecyclerViewGatewayClick)
+        gatewaysRecyclerViewAdapter =
+            GatewaysRecyclerViewAdapter(listOf(), ::onRecyclerViewClick)
 
         binding.rcvGatewaysTicket.apply {
-            layoutManager = GridLayoutManager(requireContext(),2)
+            layoutManager = GridLayoutManager(requireContext(), 2)
             adapter = gatewaysRecyclerViewAdapter
         }
 
 
-        viewModel.ticket.observe(viewLifecycleOwner){
-            when(it){
+        viewModel.ticket.observe(viewLifecycleOwner) {
+            when (it) {
                 is Resource.Error -> {
                     /* TODO : Changer le message */
-                    Toast.makeText(requireContext(),it.throwable.message,Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), it.throwable.message, Toast.LENGTH_SHORT)
+                        .show()
                     requireActivity().supportFragmentManager.popBackStack()
                 }
                 is Resource.Success -> {
@@ -72,14 +74,17 @@ class DetailTicketFragment : Fragment(R.layout.fragment_detail_ticket){
                     binding.txvTicketId.text = ticket.ticketNumber
                     binding.txvTicketDate.text = DateHelper.formatISODate(ticket.createdDate)
 
-                    binding.chipHaut.chipBackgroundColor = ticketPriorityColor(requireContext(),ticket.priority)
-                    binding.chipBas.chipBackgroundColor = ticketStatusColor(requireContext(),ticket.status)
+                    binding.chipHaut.chipBackgroundColor =
+                        ticketPriorityColor(requireContext(), ticket.priority)
+                    binding.chipBas.chipBackgroundColor =
+                        ticketStatusColor(requireContext(), ticket.status)
                     binding.chipHaut.text = ticket.priority
                     binding.chipBas.text = ticket.status
 
 
 
-                    binding.txvNomPrenomTicket.text = "${ticket.customer.firstName} ${ticket.customer.lastName}"
+                    binding.txvNomPrenomTicket.text =
+                        "${ticket.customer.firstName} ${ticket.customer.lastName}"
                     binding.txvAddressTicket.text = ticket.customer.address
                     binding.txvVilleTicket.text = ticket.customer.city
 
@@ -91,9 +96,6 @@ class DetailTicketFragment : Fragment(R.layout.fragment_detail_ticket){
                 }
             }
         }
-
-
-
 
 
         /* Button pour ouvrir le scan du codeQR*/
@@ -108,23 +110,26 @@ class DetailTicketFragment : Fragment(R.layout.fragment_detail_ticket){
     private fun handleQuickieQRResult(qrResult: QRResult) {
         when (qrResult) {
             is QRResult.QRSuccess -> {
-                Toast.makeText(context,qrResult.content.rawValue,Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, qrResult.content.rawValue, Toast.LENGTH_SHORT).show()
             }
             is QRResult.QRUserCanceled -> {
-                Toast.makeText(context,"Tentative de scan annulée",Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Tentative de scan annulée", Toast.LENGTH_SHORT).show()
             }
             is QRResult.QRMissingPermission -> {
-                Toast.makeText(context,"Manque la permission de camera",Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Manque la permission de camera", Toast.LENGTH_SHORT).show()
             }
             is QRResult.QRError -> {
-                Toast.makeText(context,qrResult.exception.message,Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, qrResult.exception.message, Toast.LENGTH_SHORT).show()
             }
         }
     }
 
-    private fun onRecyclerViewGatewayClick(gateway: Gateway) {
+    //----------------------------------------------------------------------------------------------------------
+
+    private fun onRecyclerViewClick(gateway: Gateway) {
         Toast.makeText(requireContext(), gateway.serialNumber, Toast.LENGTH_LONG).show()
-        val direction = GatewaysFragmentDirections.actionNavigationGatewaysToDetailGatewayFragment(gateway.href)
+        val direction =
+            GatewaysFragmentDirections.actionNavigationGatewaysToDetailGatewayFragment(gateway.href)
         findNavController().navigate(direction)
     }
 
