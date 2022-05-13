@@ -38,13 +38,16 @@ class NetworkFragment : Fragment(R.layout.fragment_network) {
                     Toast.makeText(requireContext(), "Erreur", Toast.LENGTH_LONG).show()
                 }
                 is LoadingResource.Loading -> {
-
+                    binding.pgbLoading.show()
+                    binding.rcvReseau.visibility = View.INVISIBLE
                 }
                 is LoadingResource.Success -> {
+                    binding.pgbLoading.hide()
                     binding.txvDateReboot.text = DateHelper.formatISODate(it.data!!.nextReboot)
                     binding.txvDateLastUpdate.text = DateHelper.formatISODate(it.data!!.updateDate)
                     networksRecyclerViewAdapter.networkNodes = it.data!!.nodes
                     networksRecyclerViewAdapter.notifyAllItemChanged()
+                    binding.rcvReseau.visibility = View.VISIBLE
                 }
             }
         }
