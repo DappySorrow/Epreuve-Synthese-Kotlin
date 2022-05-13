@@ -6,14 +6,11 @@ import android.viewbinding.library.fragment.viewBinding
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModel
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
-import com.tp_apps.MainActivity
 import com.tp_apps.R
 import com.tp_apps.databinding.FragmentDetailTicketBinding
-import com.tp_apps.databinding.FragmentTicketsBinding
 import com.tp_apps.domain.models.Gateway
 import com.tp_apps.helpers.ColorHelper.ticketPriorityColor
 import com.tp_apps.helpers.ColorHelper.ticketStatusColor
@@ -22,8 +19,9 @@ import com.tp_apps.helpers.DateHelper
 import com.tp_apps.helpers.Resource
 import com.tp_apps.helpers.notifyAllItemChanged
 import com.tp_apps.presentation.adapters.GatewaysRecyclerViewAdapter
-import com.tp_apps.presentation.ui.capture.CaptureActivity
-
+import io.github.g00fy2.quickie.QRResult
+import io.github.g00fy2.quickie.ScanCustomCode
+import io.github.g00fy2.quickie.ScanQRCode
 
 
 class DetailTicketFragment : Fragment(R.layout.fragment_detail_ticket){
@@ -36,6 +34,16 @@ class DetailTicketFragment : Fragment(R.layout.fragment_detail_ticket){
     private lateinit var gatewaysRecyclerViewAdapter : GatewaysRecyclerViewAdapter
 
     private val args : DetailTicketFragmentArgs by navArgs()
+
+    //----------------------------------------------------------------------------------------------------------
+
+    private val quickieActivityLauncher =
+        registerForActivityResult(ScanQRCode(), ::handleQuickieQRResult)
+
+    private val codeBarActivityLauncher =
+        registerForActivityResult(ScanCustomCode(), ::handleQuickieCodeBarre)
+
+    //----------------------------------------------------------------------------------------------------------
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -91,9 +99,45 @@ class DetailTicketFragment : Fragment(R.layout.fragment_detail_ticket){
 
         /* Button pour ouvrir le scan du codeQR*/
         binding.buttonInstall.setOnClickListener() {
-            startActivity(CaptureActivity.newIntent(requireContext()))
+            //
         }
 
+    }
+
+    //----------------------------------------------------------------------------------------------------------
+
+    private fun handleQuickieQRResult(qrResult: QRResult) {
+        when (qrResult) {
+            is QRResult.QRSuccess -> {
+                //TODO
+            }
+            is QRResult.QRUserCanceled -> {
+                //TODO
+            }
+            is QRResult.QRMissingPermission -> {
+                //TODO
+            }
+            is QRResult.QRError -> {
+                //TODO
+            }
+        }
+    }
+
+    private fun handleQuickieCodeBarre(qrResult: QRResult) {
+        when (qrResult) {
+            is QRResult.QRSuccess -> {
+                //TODO
+            }
+            is QRResult.QRUserCanceled -> {
+                //TODO
+            }
+            is QRResult.QRMissingPermission -> {
+                //TODO
+            }
+            is QRResult.QRError -> {
+                //TODO
+            }
+        }
     }
 
     private fun onRecyclerViewGatewayClick(gateway: Gateway) {
