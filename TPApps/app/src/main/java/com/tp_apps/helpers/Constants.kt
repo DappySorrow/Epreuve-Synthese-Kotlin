@@ -13,10 +13,10 @@ object Constants {
 
     }
 
-    const val GATEWAY_REFRESH = 60000L
     const val GATEWAY_LOADING = 1000L
     const val TIMER_MAX = 10000L
     const val TIMER_INTERVAL = 1000L
+    const val REFRESH_GATEWAY_DELAY  = 60000L
     const val REFRESH_TICKET_DELAY = 30000L
     const val REFRESH_NETWORK_DELAY = 120000L
 
