@@ -6,6 +6,7 @@ import android.viewbinding.library.fragment.viewBinding
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
@@ -19,6 +20,7 @@ import com.tp_apps.helpers.DateHelper
 import com.tp_apps.helpers.Resource
 import com.tp_apps.helpers.notifyAllItemChanged
 import com.tp_apps.presentation.adapters.GatewaysRecyclerViewAdapter
+import com.tp_apps.presentation.ui.gateways.GatewaysFragmentDirections
 import io.github.g00fy2.quickie.QRResult
 import io.github.g00fy2.quickie.ScanCustomCode
 import io.github.g00fy2.quickie.ScanQRCode
@@ -39,9 +41,6 @@ class DetailTicketFragment : Fragment(R.layout.fragment_detail_ticket){
 
     private val quickieActivityLauncher =
         registerForActivityResult(ScanQRCode(), ::handleQuickieQRResult)
-
-    private val codeBarActivityLauncher =
-        registerForActivityResult(ScanCustomCode(), ::handleQuickieCodeBarre)
 
     //----------------------------------------------------------------------------------------------------------
 
@@ -99,7 +98,7 @@ class DetailTicketFragment : Fragment(R.layout.fragment_detail_ticket){
 
         /* Button pour ouvrir le scan du codeQR*/
         binding.buttonInstall.setOnClickListener() {
-            //
+            quickieActivityLauncher.launch(null)
         }
 
     }
@@ -109,43 +108,24 @@ class DetailTicketFragment : Fragment(R.layout.fragment_detail_ticket){
     private fun handleQuickieQRResult(qrResult: QRResult) {
         when (qrResult) {
             is QRResult.QRSuccess -> {
-                //TODO
+                Toast.makeText(context,qrResult.content.rawValue,Toast.LENGTH_SHORT).show()
             }
             is QRResult.QRUserCanceled -> {
-                //TODO
+                Toast.makeText(context,"Tentative de scan annulée",Toast.LENGTH_SHORT).show()
             }
             is QRResult.QRMissingPermission -> {
-                //TODO
+                Toast.makeText(context,"Manque la permission de camera",Toast.LENGTH_SHORT).show()
             }
             is QRResult.QRError -> {
-                //TODO
-            }
-        }
-    }
-
-    private fun handleQuickieCodeBarre(qrResult: QRResult) {
-        when (qrResult) {
-            is QRResult.QRSuccess -> {
-                //TODO
-            }
-            is QRResult.QRUserCanceled -> {
-                //TODO
-            }
-            is QRResult.QRMissingPermission -> {
-                //TODO
-            }
-            is QRResult.QRError -> {
-                //TODO
+                Toast.makeText(context,qrResult.exception.message,Toast.LENGTH_SHORT).show()
             }
         }
     }
 
     private fun onRecyclerViewGatewayClick(gateway: Gateway) {
         Toast.makeText(requireContext(), gateway.serialNumber, Toast.LENGTH_LONG).show()
-        //val direction = GatewaysFragmentDirections.actionNavListPlanetToNavPlanet(gateway.href)
-        //findNavController().navigate(direction)
-
-
+        val direction = GatewaysFragmentDirections.actionNavigationGatewaysToDetailGatewayFragment(gateway.href)
+        findNavController().navigate(direction)
     }
 
 }
