@@ -60,8 +60,8 @@ class GatewaysFragment : Fragment(R.layout.fragment_gateways) {
     //Quand on clic sur un gateway
     private fun onRecyclerViewGatewayClick(gateway: Gateway) {
         Toast.makeText(requireContext(), gateway.serialNumber, Toast.LENGTH_LONG).show()
-        //val direction = GatewaysFragmentDirections.actionNavListPlanetToNavPlanet(gateway.href)
-        //findNavController().navigate(direction)
+        val direction = GatewaysFragmentDirections.actionNavigationGatewaysToDetailGatewayFragment(gateway.href)
+        findNavController().navigate(direction)
 
 
     }

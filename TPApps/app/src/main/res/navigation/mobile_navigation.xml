@@ -19,7 +19,11 @@
         android:id="@+id/navigation_gateways"
         android:name="com.tp_apps.presentation.ui.gateways.GatewaysFragment"
         android:label="@string/title_gateways"
-        tools:layout="@layout/fragment_gateways" />
+        tools:layout="@layout/fragment_gateways" >
+        <action
+            android:id="@+id/action_navigation_gateways_to_detailGatewayFragment"
+            app:destination="@id/detailGatewayFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_network"
@@ -29,7 +33,17 @@
     <fragment
         android:id="@+id/detailTicketFragment"
         android:name="com.tp_apps.presentation.ui.tickets.DetailTicketFragment"
-        android:label="DetailTicketFragment" >
+        android:label="DetailTicketFragment"
+        tools:layout="@layout/fragment_detail_ticket">
+        <argument
+            android:name="href"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailGatewayFragment"
+        android:name="com.tp_apps.presentation.ui.gateways.DetailGatewayFragment"
+        android:label="fragment_detail_gateway"
+        tools:layout="@layout/fragment_detail_gateway" >
         <argument
             android:name="href"
             app:argType="string" />
