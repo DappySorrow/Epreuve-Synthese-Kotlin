@@ -15,7 +15,6 @@ import com.tp_apps.domain.models.Gateway
 import com.tp_apps.helpers.LoadingResource
 import com.tp_apps.helpers.notifyAllItemChanged
 import com.tp_apps.presentation.adapters.GatewaysRecyclerViewAdapter
-import kotlinx.coroutines.delay
 
 class GatewaysFragment : Fragment(R.layout.fragment_gateways) {
 
@@ -27,7 +26,7 @@ class GatewaysFragment : Fragment(R.layout.fragment_gateways) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        gatewaysRecyclerViewAdapter = GatewaysRecyclerViewAdapter(listOf(), ::onRecyclerViewGatewayClick)
+        gatewaysRecyclerViewAdapter = GatewaysRecyclerViewAdapter(listOf(), ::onRecyclerViewClick)
         binding.rcvGateways.apply {
             layoutManager = GridLayoutManager(requireContext(),2)
             adapter = gatewaysRecyclerViewAdapter
@@ -55,8 +54,7 @@ class GatewaysFragment : Fragment(R.layout.fragment_gateways) {
     }
 
     //Quand on clic sur un gateway
-    private fun onRecyclerViewGatewayClick(gateway: Gateway) {
-        Toast.makeText(requireContext(), gateway.serialNumber, Toast.LENGTH_LONG).show()
+    private fun onRecyclerViewClick(gateway: Gateway) {
         val direction = GatewaysFragmentDirections.actionNavigationGatewaysToDetailGatewayFragment(gateway.href)
         findNavController().navigate(direction)
 
