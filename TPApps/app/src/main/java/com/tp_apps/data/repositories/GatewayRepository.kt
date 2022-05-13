@@ -1,5 +1,6 @@
 package com.tp_apps.data.repositories
 
+import android.util.Log
 import com.github.kittinunf.fuel.core.extensions.jsonBody
 import com.github.kittinunf.result.Result
 import com.tp_apps.domain.models.Gateway
@@ -50,17 +51,19 @@ class GatewayRepository {
     // customer
     // connection
     // config
-
+    // href ???
+    //TODO
 
     fun postOne(gatewayInfosJSON : String) : Flow<Resource<Gateway>>{
 
-        //TODO
-        val serialNumber = gatewayInfosJSON
+        val gatewayInfos = gatewayInfosJSON.splitToSequence('"').toList()
 
-        val gateway = Gateway()
+        val serialNumber = gatewayInfos.elementAt(3)
+        val revision = gatewayInfos.elementAt(7)
+        val pin = gatewayInfos.elementAt(11)
+        val hash = gatewayInfos.elementAt(15)
 
-
-
+        val gateway = Gateway("",serialNumber, revision, pin, hash)
 
         return flow {
             while (true) {
