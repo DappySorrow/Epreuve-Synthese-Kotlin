@@ -114,25 +114,22 @@ class DetailTicketFragment : Fragment(R.layout.fragment_detail_ticket) {
 
     //----------------------------------------------------------------------------------------------------------
 
+    //TODO
     private fun handleQuickieQRResult(qrResult: QRResult) {
         when (qrResult) {
             is QRResult.QRSuccess -> {
                 Toast.makeText(context, qrResult.content.rawValue, Toast.LENGTH_SHORT).show()
 
+                Log.e("post", "DetailTicketFragment")
 
-                Log.e("post", qrResult.content.rawValue)
-                //ex:
-                // {"serialNumber":"d93ccd92442c0929",
-                // "revision":"UA-500947-71",
-                // "pin":"ae98e05b",
-                // "hash":"a7c0067add454e877e448de8d1696afc631b7323b53cc7b16781274dab055f63"}
 
-                //Manque : customer, connection et config
-                //TODO
+                val href = viewModel.ticket.value!!.data!!.customer.href
+                val hrefList = href.splitToSequence('/').toList()
+                val id = hrefList.elementAt(4)
 
-                gatewayRepository.postOne(qrResult.content.rawValue)
-                gatewayRepository.retrieveAll()
+                Log.e("post", href)
 
+                viewModel.addGateway(qrResult.content.rawValue, id)
 
             }
             is QRResult.QRUserCanceled -> {

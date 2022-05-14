@@ -1,5 +1,7 @@
 package com.tp_apps.data.datasources
 
+import android.util.Log
+import android.widget.Toast
 import com.github.kittinunf.fuel.core.extensions.jsonBody
 import com.github.kittinunf.fuel.httpGet
 import com.github.kittinunf.fuel.httpPost
@@ -23,7 +25,6 @@ class GatewayDataSource {
     private val json = Json { ignoreUnknownKeys = true }
 
     suspend fun retrieveAll() : List<Gateway> {
-
         return withContext(Dispatchers.IO) {
             val (_, _, result) = Constants.BaseURL.GATEWAYS.httpGet().responseJson()
             when(result) {
@@ -38,11 +39,11 @@ class GatewayDataSource {
             }
         }
     }
-
+    /*
     suspend fun postOne(gateway: Gateway): Resource<Gateway> {
         return withContext(Dispatchers.IO) {
             val body = Json.encodeToString(gateway)
-            val (_, _, result) = Constants.BaseURL.CUSTOMERS.httpPost().jsonBody(body).responseJson()
+            val (_, _, result) = Constants.BaseURL.GATEWAYS.httpPost().jsonBody(body).responseJson()
 
             when (result) {
                 is Result.Success -> {
@@ -54,4 +55,5 @@ class GatewayDataSource {
             }
         }
     }
+    */
 }
