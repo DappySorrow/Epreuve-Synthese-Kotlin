@@ -39,21 +39,4 @@ class GatewayDataSource {
             }
         }
     }
-    /*
-    suspend fun postOne(gateway: Gateway): Resource<Gateway> {
-        return withContext(Dispatchers.IO) {
-            val body = Json.encodeToString(gateway)
-            val (_, _, result) = Constants.BaseURL.GATEWAYS.httpPost().jsonBody(body).responseJson()
-
-            when (result) {
-                is Result.Success -> {
-                    return@withContext Resource.Success(Json.decodeFromString<Gateway>(result.value.content))
-                }
-                is Result.Failure -> {
-                    return@withContext Resource.Error(result.error.exception)
-                }
-            }
-        }
-    }
-    */
 }

@@ -114,20 +114,16 @@ class DetailTicketFragment : Fragment(R.layout.fragment_detail_ticket) {
 
     //----------------------------------------------------------------------------------------------------------
 
-    //TODO
     private fun handleQuickieQRResult(qrResult: QRResult) {
         when (qrResult) {
             is QRResult.QRSuccess -> {
                 Toast.makeText(context, qrResult.content.rawValue, Toast.LENGTH_SHORT).show()
-
-                Log.e("post", "DetailTicketFragment")
 
 
                 val href = viewModel.ticket.value!!.data!!.customer.href
                 val hrefList = href.splitToSequence('/').toList()
                 val id = hrefList.elementAt(4)
 
-                Log.e("post", href)
 
                 viewModel.addGateway(qrResult.content.rawValue, id)
 

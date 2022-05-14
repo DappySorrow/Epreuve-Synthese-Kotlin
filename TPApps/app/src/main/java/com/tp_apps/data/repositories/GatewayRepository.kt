@@ -26,6 +26,8 @@ import kotlinx.serialization.json.Json
 
 class GatewayRepository {
 
+    private val json = Json { ignoreUnknownKeys = true }
+
     private val gatewayDataSource = GatewayDataSource()
 
     suspend fun retrieveAll(): Flow<LoadingResource<List<Gateway>>> {
@@ -45,19 +47,14 @@ class GatewayRepository {
 
     suspend fun postOne(borne: Borne, id : String): Resource<Gateway> {
         return withContext(Dispatchers.IO) {
-            val body = Json.encodeToString(borne)
+            val body = json.encodeToString(borne)
             val (_, _, result) = "${Constants.BaseURL.CUSTOMERS}/${id}/gateways".httpPost().jsonBody(body).responseJson()
-            //Log.e("post", "${Constants.BaseURL.CUSTOMERS}/${"60762f3afc13ae242c001043"}/gateways")
-            Log.e("post", "${Constants.BaseURL.CUSTOMERS}/${id}/gateways")
             when (result) {
                 is Result.Success -> {
-                    Log.e("post", "Borne Success")
-                    Log.e("post", result.value.content)
-                    return@withContext Resource.Success(Json.decodeFromString<Gateway>(result.value.content))
+                    return@withContext Resource.Success(json.decodeFromString<Gateway>(result.value.content))
 
                 }
                 is Result.Failure -> {
-                    Log.e("post", "Borne Failure")
                     return@withContext Resource.Error(result.error.exception)
                 }
             }
