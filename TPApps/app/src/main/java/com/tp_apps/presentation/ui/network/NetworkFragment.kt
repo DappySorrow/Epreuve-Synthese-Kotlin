@@ -35,7 +35,7 @@ class NetworkFragment : Fragment(R.layout.fragment_network) {
 
             when(it){
                 is LoadingResource.Error -> {
-                    Toast.makeText(requireContext(), "Erreur", Toast.LENGTH_LONG).show()
+                    Toast.makeText(requireContext(), R.string.error, Toast.LENGTH_LONG).show()
                 }
                 is LoadingResource.Loading -> {
                     binding.pgbLoading.show()

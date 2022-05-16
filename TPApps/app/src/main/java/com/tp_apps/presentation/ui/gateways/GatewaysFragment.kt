@@ -37,7 +37,6 @@ class GatewaysFragment : Fragment(R.layout.fragment_gateways) {
             when (it) {
                 is LoadingResource.Error -> {
                     Toast.makeText(requireContext(), it.message, Toast.LENGTH_LONG).show()
-                    Log.e("test", it.message!!)
                 }
                 is LoadingResource.Success -> {
                     binding.pgbLoading.hide()

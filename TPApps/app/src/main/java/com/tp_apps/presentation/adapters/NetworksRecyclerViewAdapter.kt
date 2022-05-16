@@ -2,7 +2,9 @@ package com.tp_apps.presentation.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.res.TypedArrayUtils.getText
 import androidx.recyclerview.widget.RecyclerView
+import com.tp_apps.R
 import com.tp_apps.databinding.ItemNetworkBinding
 import com.tp_apps.domain.models.NetworkNode
 import com.tp_apps.helpers.ColorHelper
@@ -38,9 +40,20 @@ class NetworksRecyclerViewAdapter(var networkNodes: List<NetworkNode> = listOf()
             binding.txvUpload.text = "${networkNodes.connection.upload.toString()} Ebps"
             binding.txvQualiteSignal.text = "${networkNodes.connection.signal.toString()} dBm"
 
+            //Recevoir le context pour bond les strings
+            val context = binding.root.context
 
-            binding.chipHaut.text = networkNodes.connection.status
-            binding.chipHaut.chipBackgroundColor = ColorHelper.connectionStatusColor(binding.root.context,networkNodes.connection.status)
+            if(networkNodes.connection.status == context.getText(R.string.Online_Server)){
+                binding.chipHaut.text = context.getText(R.string.Online)
+                binding.chipHaut.chipBackgroundColor = ColorHelper.connectionStatusColor(binding.root.context,networkNodes.connection.status)
+            }
+            else{
+                binding.chipHaut.text = context.getText(R.string.Offline)
+                binding.chipHaut.chipBackgroundColor = ColorHelper.connectionStatusColor(binding.root.context,networkNodes.connection.status)
+            }
+
+
+
 
 
 

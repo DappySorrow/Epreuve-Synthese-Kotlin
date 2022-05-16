@@ -4,17 +4,20 @@
     <string name="title_gateways">Gateways</string>
     <string name="title_network">Network</string>
     <!-- ======================================== -->
-    <string name="tenretni">Tenretni</string>
+    <string name="tenretni" translatable="false">Tenretni</string>
     <string name="timer">Loading %s/10 ...</string>
-    <string name="names">Jean-Simon Barbeau, Olivier Mathieu-Grégoire &amp; Benjamin Lemire</string>
-    <string name="loading_template">Loading 0/10 ...</string>
-    <string name="skip">Skip</string>
-    <string name="trademark">Tenretni - 2022®</string>
-    <string name="quickie">Quickie</string>
+    <string name="names" translatable="false">Jean-Simon Barbeau, Olivier Mathieu-Grégoire &amp; Benjamin Lemire</string>
+    <string name="loading_template" translatable="false">Loading 0/10 ...</string>
+    <string name="skip" translatable="false">Skip</string>
+    <string name="trademark" translatable="false">Tenretni - 2022®</string>
+    <string name="quickie" translatable="false">Quickie</string>
+    <string name="Online_Server" translatable="false">Online</string>
+    <string name="Online">Online</string>
+    <string name="Offline">Offline</string>
     <!-- ======================================== -->
     <string name="error">Impossible de charger les données</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
 
 
 </resources>

@@ -32,11 +32,5 @@ class SplashActivity : AppCompatActivity() {
                 this.finish()
             }
         }
-
-        //Pour permettre aux collegues de skiper
-        binding.test.setOnClickListener() {
-            this.finish()
-            startActivity(MainActivity.newIntent(this))
-        }
     }
 }

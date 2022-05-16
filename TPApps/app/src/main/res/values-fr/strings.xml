@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TP-Apps</string>
+    <string name="title_tickets">Billets</string>
+    <string name="title_gateways">Passerelles</string>
+    <string name="timer">Chargement %s/10...</string>
+    <string name="error">Impossible de charger les données</string>
+    <string name="title_network">Réseau</string>
+    <string name="Online">En Ligne</string>
+    <string name="Offline">Hors Ligne</string>
+</resources>

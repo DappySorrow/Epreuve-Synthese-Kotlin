@@ -38,6 +38,9 @@
         <argument
             android:name="href"
             app:argType="string" />
+        <action
+            android:id="@+id/action_detailTicketFragment_to_detailGatewayFragment"
+            app:destination="@id/detailGatewayFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailGatewayFragment"

@@ -16,8 +16,6 @@ class SplashViewModel : ViewModel() {
     var _isTimerDone = MutableLiveData<Boolean>()
     val isTimerDone: LiveData<Boolean> get() = _isTimerDone
 
-    //var timerDone = false
-
     private val timer = object: CountDownTimer(Constants.TIMER_MAX, Constants.TIMER_INTERVAL) {
 
         override fun onTick(millisUntilFinished: Long) {
