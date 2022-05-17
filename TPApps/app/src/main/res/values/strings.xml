@@ -14,6 +14,10 @@
     <string name="Online_Server" translatable="false">Online</string>
     <string name="Online">Online</string>
     <string name="Offline">Offline</string>
+    <string name="Ebps" translatable="false">%s Ebps</string>
+    <string name="ns" translatable="false">%s ns</string>
+    <string name="dBm" translatable="false">%s dBm</string>
+
     <!-- ======================================== -->
     <string name="error">Impossible de charger les données</string>
     <!-- TODO: Remove or change this placeholder text -->

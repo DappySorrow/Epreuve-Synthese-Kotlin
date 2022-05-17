@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.tp_apps.R
 import com.tp_apps.databinding.ItemGatewaysBinding
 import com.tp_apps.domain.models.Gateway
 import com.tp_apps.helpers.ColorHelper
@@ -19,18 +20,21 @@ class GatewaysRecyclerViewAdapter(
 
             val status = gateway.connection.status
 
+            //Recevoir le context pour bond les strings
+            val context = binding.root.context
+
             if (status == "Online")
             {
                 binding.chipStatus.chipBackgroundColor = ColorHelper.connectionStatusColor(binding.root.context,gateway.connection.status)
-                binding.chipStatus.text = status
-                binding.txvLatence.text = "${gateway.connection.ping.toString()} ns"
-                binding.txvDownload.text = "${gateway.connection.download.toString()} Ebps"
-                binding.txvUpload.text = "${gateway.connection.upload.toString()} Ebps"
+                binding.chipStatus.text = context.getText(R.string.Online)
+                binding.txvLatence.text = context.getString(R.string.ns, gateway.connection.ping.toString())
+                binding.txvDownload.text = context.getString(R.string.Ebps, gateway.connection.download.toString())
+                binding.txvUpload.text = context.getString(R.string.Ebps, gateway.connection.upload.toString())
                 binding.txvTicketId.text = gateway.serialNumber
             }
             else{
                 binding.chipStatus.chipBackgroundColor = ColorHelper.connectionStatusColor(binding.root.context,gateway.connection.status)
-                binding.chipStatus.text = status
+                binding.chipStatus.text = context.getText(R.string.Offline)
                 binding.txvOffline.visibility = View.VISIBLE
                 binding.txvLatence.visibility = View.INVISIBLE
                 binding.txvDownload.visibility = View.INVISIBLE
