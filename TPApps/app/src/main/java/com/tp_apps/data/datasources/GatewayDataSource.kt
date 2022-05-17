@@ -40,9 +40,9 @@ class GatewayDataSource {
         }
     }
 
-    suspend fun retriveGateways(href: String) : List<Gateway>{
+    suspend fun retrieveCustomerGateways(href: String) : List<Gateway>{
         return withContext(Dispatchers.IO) {
-            val (_, _, result) = "/gateways".httpGet().responseJson()
+            val (_, _, result) = "${href}/gateways".httpGet().responseJson()
             when(result) {
                 is Result.Success -> {
                     return@withContext json.decodeFromString(result.value.content)

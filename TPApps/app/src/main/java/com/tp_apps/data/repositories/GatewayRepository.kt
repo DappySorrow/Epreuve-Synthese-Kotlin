@@ -61,8 +61,19 @@ class GatewayRepository {
         }
     }
 
-    suspend fun retrieveGateways(href: String) : Flow<LoadingResource<List<Gateway>>>{
-
+    suspend fun retrieveCustomerGateways(href: String) : Flow<LoadingResource<List<Gateway>>>{
+        return flow {
+            while (true) {
+                try {
+                    emit(LoadingResource.Loading())
+                    delay(Constants.GATEWAY_LOADING)
+                    emit(LoadingResource.Success(gatewayDataSource.retrieveCustomerGateways(href)))
+                } catch (ex: Exception) {
+                    emit(LoadingResource.Error(ex, ex.message))
+                }
+                delay(Constants.REFRESH_GATEWAY_DELAY)
+            }
+        }
     }
 
 
