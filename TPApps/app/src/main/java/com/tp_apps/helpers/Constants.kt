@@ -22,6 +22,9 @@ object Constants {
 
     const val FLAG_API_URL = "https://flagcdn.com/h40/%s.png"
 
+    const val API_KEY = "c9fe59e4b2d3e22e3145ab9bb985e36b"
+
+
     enum class TicketPriority {
         Low, Normal, High, Critical
     }

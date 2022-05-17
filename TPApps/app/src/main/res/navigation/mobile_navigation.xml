@@ -41,6 +41,9 @@
         <action
             android:id="@+id/action_detailTicketFragment_to_detailGatewayFragment"
             app:destination="@id/detailGatewayFragment" />
+        <action
+            android:id="@+id/action_detailTicketFragment_to_mapsActivity"
+            app:destination="@id/mapsActivity" />
     </fragment>
     <fragment
         android:id="@+id/detailGatewayFragment"
@@ -51,4 +54,13 @@
             android:name="href"
             app:argType="string" />
     </fragment>
+    <activity
+        android:id="@+id/mapsActivity"
+        android:name="com.tp_apps.presentation.ui.map.MapsActivity"
+        android:label="activity_maps"
+        tools:layout="@layout/activity_maps" >
+        <argument
+            android:name="position"
+            app:argType="com.google.android.gms.maps.model.LatLng" />
+    </activity>
 </navigation>
