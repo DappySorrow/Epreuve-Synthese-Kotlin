@@ -14,5 +14,5 @@ data class Customer(
     val country: String = "",
     val postalCode: String = "",
     val phone: String = "",
-    val listGateway : List<Gateway> = listOf()
+    val gateways : List<Gateway> = listOf()
 )
