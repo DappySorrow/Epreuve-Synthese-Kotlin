@@ -62,6 +62,23 @@ class DetailTicketFragment : Fragment(R.layout.fragment_detail_ticket) {
             adapter = gatewaysRecyclerViewAdapter
         }
 
+        viewModel.gateways.observe(viewLifecycleOwner){
+            when(it){
+                is LoadingResource.Error -> {
+
+                }
+                is LoadingResource.Loading -> {
+
+                }
+                is LoadingResource.Success -> {
+                    gatewaysRecyclerViewAdapter.gateways = it.data!!
+                    gatewaysRecyclerViewAdapter.notifyAllItemChanged()
+                }
+            }
+
+
+        }
+
 
         viewModel.ticket.observe(viewLifecycleOwner) {
             when (it) {
@@ -74,9 +91,8 @@ class DetailTicketFragment : Fragment(R.layout.fragment_detail_ticket) {
                 is Resource.Success -> {
 
                     val ticket = it.data!!
+                    viewModel.retrieveCustomerGateways(it.data.customer.href)
 
-                    gatewaysRecyclerViewAdapter.gateways = it.data.customer.gateways
-                    gatewaysRecyclerViewAdapter.notifyAllItemChanged()
 
                     binding.txvTicketId.text = ticket.ticketNumber
                     binding.txvTicketDate.text = DateHelper.formatISODate(ticket.createdDate)

@@ -49,10 +49,17 @@ class DetailTicketViewModel(private val href:String) : ViewModel() {
     init {
         viewModelScope.launch {
             _ticket.value = ticketRepository.retrieveOne(href)
-            gatewayRepository.retrieveAll().collect {
+
+        }
+    }
+
+    fun retrieveCustomerGateways(href : String){
+        viewModelScope.launch {
+            gatewayRepository.retrieveCustomerGateways(href).collect {
                 _gateways.value = it
             }
         }
+
     }
 
     class Factory(private val href:String) : ViewModelProvider.Factory {
