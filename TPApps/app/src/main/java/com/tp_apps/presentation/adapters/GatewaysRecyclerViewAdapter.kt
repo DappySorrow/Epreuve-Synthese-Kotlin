@@ -19,16 +19,10 @@ class GatewaysRecyclerViewAdapter(
         RecyclerView.ViewHolder(binding.root) {
         fun bind(gateway: Gateway) {
 
-            var online : Boolean = false
-
-            if (gateway.connection.status == "Online") {
-                online = true
-            }
-
             //Recevoir le context pour bond les strings
             val context = binding.root.context
 
-            if (online) {
+            if (gateway.connection.status == "Online") {
                 binding.chipStatus.text = context.getText(R.string.Online)
                 binding.txvLatence.text =
                     context.getString(R.string.ns, gateway.connection.ping.toString())
@@ -36,6 +30,14 @@ class GatewaysRecyclerViewAdapter(
                     context.getString(R.string.Ebps, gateway.connection.download.toString())
                 binding.txvUpload.text =
                     context.getString(R.string.Ebps, gateway.connection.upload.toString())
+
+                binding.txvOffline.visibility = View.INVISIBLE
+                binding.txvLatence.visibility = View.VISIBLE
+                binding.txvDownload.visibility = View.VISIBLE
+                binding.txvUpload.visibility = View.VISIBLE
+                binding.imvDownload.visibility = View.VISIBLE
+                binding.imvLatence.visibility = View.VISIBLE
+                binding.imvUpload.visibility = View.VISIBLE
 
             } else {
                 binding.chipStatus.text = context.getText(R.string.Offline)

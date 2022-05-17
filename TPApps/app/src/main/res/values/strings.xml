@@ -19,6 +19,7 @@
     <string name="dBm" translatable="false">%s dBm</string>
     <string name="Installation_Good">Installation completed</string>
     <string name="Installation_Bad">Installation error</string>
+    <string name="n_a" translatable="false">N/A</string>
 
     <!-- ======================================== -->
     <string name="error">Impossible de charger les données</string>
@@ -28,5 +29,6 @@
     <string name="Solve">Solve</string>
     <string name="title_activity_maps" translatable="false">MapsActivity</string>
     <string name="AccessDenied">Permission non accordée</string>
+
 
 </resources>
