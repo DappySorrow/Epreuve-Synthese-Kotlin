@@ -104,7 +104,7 @@ class DetailTicketFragment : Fragment(R.layout.fragment_detail_ticket) {
             }
         }
 
-
+        binding.buttonInstall.text = getString(R.string.Install)
         /* Button pour ouvrir le scan du codeQR*/
         binding.buttonInstall.setOnClickListener() {
             quickieActivityLauncher.launch(null)

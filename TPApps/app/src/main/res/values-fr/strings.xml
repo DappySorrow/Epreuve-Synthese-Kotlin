@@ -8,4 +8,6 @@
     <string name="title_network">Réseau</string>
     <string name="Online">En Ligne</string>
     <string name="Offline">Hors Ligne</string>
+    <string name="Solve">Résoudre</string>
+    <string name="Install">Installer</string>
 </resources>

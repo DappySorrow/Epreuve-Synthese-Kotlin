@@ -8,4 +8,6 @@
     <string name="error">Unable to load data</string>
     <string name="Online">Online</string>
     <string name="Offline">Offline</string>
+    <string name="Install">Install</string>
+    <string name="Solve">Solve</string>
 </resources>
