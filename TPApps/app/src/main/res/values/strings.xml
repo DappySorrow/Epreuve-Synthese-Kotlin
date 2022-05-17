@@ -17,6 +17,8 @@
     <string name="Ebps" translatable="false">%s Ebps</string>
     <string name="ns" translatable="false">%s ns</string>
     <string name="dBm" translatable="false">%s dBm</string>
+    <string name="Installation_Good">Installation completed</string>
+    <string name="Installation_Bad">Installation error</string>
 
     <!-- ======================================== -->
     <string name="error">Impossible de charger les données</string>
@@ -24,7 +26,7 @@
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="Install">Install</string>
     <string name="Solve">Solve</string>
-    <string name="title_activity_maps">MapsActivity</string>
+    <string name="title_activity_maps" translatable="false">MapsActivity</string>
     <string name="AccessDenied">Permission non accordée</string>
 
 </resources>

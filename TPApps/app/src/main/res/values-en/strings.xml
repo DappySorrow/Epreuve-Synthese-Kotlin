@@ -10,4 +10,6 @@
     <string name="Offline">Offline</string>
     <string name="Install">Install</string>
     <string name="Solve">Solve</string>
+    <string name="Installation_Good">Installation completed</string>
+    <string name="Installation_Bad">Installation error</string>
 </resources>

@@ -49,13 +49,12 @@ class DetailTicketFragment : Fragment(R.layout.fragment_detail_ticket) {
 
     private val gatewayRepository = GatewayRepository()
 
-    private val _gateways = MutableLiveData<LoadingResource<List<Gateway>>>()
-    val gateways: LiveData<LoadingResource<List<Gateway>>> get() = _gateways
-
     //----------------------------------------------------------------------------------------------------------
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.buttonInstall.text = getString(R.string.Install)
 
         gatewaysRecyclerViewAdapter =
             GatewaysRecyclerViewAdapter(listOf(), ::onRecyclerViewClick)
@@ -65,10 +64,13 @@ class DetailTicketFragment : Fragment(R.layout.fragment_detail_ticket) {
             adapter = gatewaysRecyclerViewAdapter
         }
 
-        viewModel.gateways.observe(viewLifecycleOwner){
-            when(it){
-                is LoadingResource.Error -> {
+        //========================================================================================
 
+        //GET ALL
+        viewModel.gateways.observe(viewLifecycleOwner) {
+            when (it) {
+                is LoadingResource.Error -> {
+                    Toast.makeText(context, R.string.error, Toast.LENGTH_SHORT).show()
                 }
                 is LoadingResource.Loading -> {
 
@@ -78,10 +80,21 @@ class DetailTicketFragment : Fragment(R.layout.fragment_detail_ticket) {
                     gatewaysRecyclerViewAdapter.notifyAllItemChanged()
                 }
             }
-
-
         }
 
+        //POST ONE
+        viewModel.gateway.observe(viewLifecycleOwner) {
+            when (it) {
+                is Resource.Error -> {
+                    Toast.makeText(context, R.string.Installation_Bad, Toast.LENGTH_SHORT).show()
+                }
+                is Resource.Success -> {
+                    Toast.makeText(context, R.string.Installation_Good, Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+
+        //========================================================================================
 
         viewModel.ticket.observe(viewLifecycleOwner) {
             when (it) {
@@ -119,20 +132,23 @@ class DetailTicketFragment : Fragment(R.layout.fragment_detail_ticket) {
                         .into(binding.imvPaysTicket)
 
 
-                    position = LatLng(ticket.customer.coord.latitude.toDouble(), ticket.customer.coord.longitude.toDouble())
+                    position = LatLng(
+                        ticket.customer.coord.latitude.toDouble(),
+                        ticket.customer.coord.longitude.toDouble()
+                    )
 
 
                 }
             }
         }
 
-        binding.buttonInstall.text = getString(R.string.Install)
+
         /* Button pour ouvrir le scan du codeQR*/
         binding.buttonInstall.setOnClickListener() {
             quickieActivityLauncher.launch(null)
         }
 
-        binding.floatingActionButton.setOnClickListener{
+        binding.floatingActionButton.setOnClickListener {
             val action = DetailTicketFragmentDirections
                 .actionDetailTicketFragmentToMapsActivity(position!!)
             findNavController().navigate(action)
@@ -145,15 +161,14 @@ class DetailTicketFragment : Fragment(R.layout.fragment_detail_ticket) {
     private fun handleQuickieQRResult(qrResult: QRResult) {
         when (qrResult) {
             is QRResult.QRSuccess -> {
-                Toast.makeText(context, qrResult.content.rawValue, Toast.LENGTH_SHORT).show()
-
-
+                //Avoir accès au href du client
                 val href = viewModel.ticket.value!!.data!!.customer.href
-                val hrefList = href.splitToSequence('/').toList()
-                val id = hrefList.elementAt(4)
 
+                Log.e("post", href)
 
-                viewModel.addGateway(qrResult.content.rawValue, id)
+                //Ajouter la borne
+                viewModel.addGateway(qrResult.content.rawValue, href)
+
 
             }
             is QRResult.QRUserCanceled -> {

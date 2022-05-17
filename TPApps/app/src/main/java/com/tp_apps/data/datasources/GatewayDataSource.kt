@@ -7,10 +7,7 @@ import com.github.kittinunf.fuel.httpGet
 import com.github.kittinunf.fuel.httpPost
 import com.github.kittinunf.fuel.json.responseJson
 import com.github.kittinunf.result.Result
-import com.tp_apps.domain.models.Config
-import com.tp_apps.domain.models.Connection
-import com.tp_apps.domain.models.Customer
-import com.tp_apps.domain.models.Gateway
+import com.tp_apps.domain.models.*
 import com.tp_apps.helpers.Constants
 import com.tp_apps.helpers.Resource
 import kotlinx.coroutines.Dispatchers
@@ -30,11 +27,24 @@ class GatewayDataSource {
             when(result) {
                 is Result.Success -> {
                     return@withContext json.decodeFromString(result.value.content)
-
                 }
                 is Result.Failure -> {
                     throw result.error.exception
+                }
+            }
+        }
+    }
 
+    suspend fun postOne(borne: Borne, href: String): Gateway {
+        return withContext(Dispatchers.IO) {
+            val body = json.encodeToString(borne)
+            val (_, _, result) = "${href}/gateways".httpPost().jsonBody(body).responseJson()
+            when (result) {
+                is Result.Success -> {
+                    return@withContext json.decodeFromString<Gateway>(result.value.content)
+                }
+                is Result.Failure -> {
+                    throw result.error.exception
                 }
             }
         }
@@ -55,5 +65,4 @@ class GatewayDataSource {
             }
         }
     }
-
 }

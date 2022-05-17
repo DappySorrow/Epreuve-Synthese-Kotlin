@@ -10,4 +10,6 @@
     <string name="Offline">Hors Ligne</string>
     <string name="Solve">Résoudre</string>
     <string name="Install">Installer</string>
+    <string name="Installation_Good">Installation complétée</string>
+    <string name="Installation_Bad">Erreur lors de l\'Installation</string>
 </resources>

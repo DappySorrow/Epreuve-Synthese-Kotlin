@@ -25,9 +25,6 @@ import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
 class GatewayRepository {
-
-    private val json = Json { ignoreUnknownKeys = true }
-
     private val gatewayDataSource = GatewayDataSource()
 
     suspend fun retrieveAll(): Flow<LoadingResource<List<Gateway>>> {
@@ -45,23 +42,26 @@ class GatewayRepository {
         }
     }
 
-    suspend fun postOne(borne: Borne, id : String): Resource<Gateway> {
-        return withContext(Dispatchers.IO) {
-            val body = json.encodeToString(borne)
-            val (_, _, result) = "${Constants.BaseURL.CUSTOMERS}/${id}/gateways".httpPost().jsonBody(body).responseJson()
-            when (result) {
-                is Result.Success -> {
-                    return@withContext Resource.Success(json.decodeFromString<Gateway>(result.value.content))
+    //Pas de flow
+    suspend fun postOne(borne: Borne, href: String): Resource<Gateway> {
+        return try {
+            Resource.Success(gatewayDataSource.postOne(borne, href))
+        } catch (ex: Exception) {
+            Resource.Error(ex, ex.message)
+        }
+    }
 
-                }
-                is Result.Failure -> {
-                    return@withContext Resource.Error(result.error.exception)
-                }
+    suspend fun retrieveCustomerGatewaysNow(href: String): Flow<LoadingResource<List<Gateway>>> {
+        return flow {
+            try {
+                emit(LoadingResource.Success(gatewayDataSource.retrieveCustomerGateways(href)))
+            } catch (ex: Exception) {
+                emit(LoadingResource.Error(ex, ex.message))
             }
         }
     }
 
-    suspend fun retrieveCustomerGateways(href: String) : Flow<LoadingResource<List<Gateway>>>{
+    suspend fun retrieveCustomerGateways(href: String): Flow<LoadingResource<List<Gateway>>> {
         return flow {
             while (true) {
                 try {
