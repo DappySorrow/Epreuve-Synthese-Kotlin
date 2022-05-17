@@ -62,4 +62,7 @@ class DetailTicketViewModel(private val href:String) : ViewModel() {
 
     }
 
+//-------------------------------------------------------------------------------------------------
+
+
 }

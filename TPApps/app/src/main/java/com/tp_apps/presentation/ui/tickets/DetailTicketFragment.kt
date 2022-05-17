@@ -13,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
+import com.google.android.gms.maps.model.LatLng
 import com.tp_apps.R
 import com.tp_apps.data.datasources.GatewayDataSource
 import com.tp_apps.data.repositories.GatewayRepository
@@ -34,6 +35,8 @@ class DetailTicketFragment : Fragment(R.layout.fragment_detail_ticket) {
     private val viewModel: DetailTicketViewModel by viewModels {
         DetailTicketViewModel.Factory(args.href)
     }
+
+    private var position: LatLng? = null
 
     private lateinit var gatewaysRecyclerViewAdapter: GatewaysRecyclerViewAdapter
 
@@ -100,6 +103,9 @@ class DetailTicketFragment : Fragment(R.layout.fragment_detail_ticket) {
                         .into(binding.imvPaysTicket)
 
 
+                    position = LatLng(ticket.customer.coord.latitude.toDouble(), ticket.customer.coord.longitude.toDouble())
+
+
                 }
             }
         }
@@ -108,6 +114,12 @@ class DetailTicketFragment : Fragment(R.layout.fragment_detail_ticket) {
         /* Button pour ouvrir le scan du codeQR*/
         binding.buttonInstall.setOnClickListener() {
             quickieActivityLauncher.launch(null)
+        }
+
+        binding.floatingActionButton.setOnClickListener{
+            val action = DetailTicketFragmentDirections
+                .actionDetailTicketFragmentToMapsActivity(position!!)
+            findNavController().navigate(action)
         }
 
     }

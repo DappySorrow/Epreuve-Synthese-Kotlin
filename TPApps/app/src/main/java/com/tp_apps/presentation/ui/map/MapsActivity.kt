@@ -65,8 +65,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
-
-
         if (locationRequestPermission.checkStatus().allGranted()){
             @SuppressLint("MissingPermission")
             mMap.isMyLocationEnabled = true
