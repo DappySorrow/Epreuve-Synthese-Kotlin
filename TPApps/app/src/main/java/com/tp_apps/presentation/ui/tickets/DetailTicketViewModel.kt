@@ -20,6 +20,7 @@ class DetailTicketViewModel(private val href:String) : ViewModel() {
     val ticket: LiveData<Resource<Ticket>> get() = _ticket
 
     private val gatewayRepository = GatewayRepository()
+
     private val _gateways = MutableLiveData<LoadingResource<List<Gateway>>>()
     val gateways: LiveData<LoadingResource<List<Gateway>>> get() = _gateways
 

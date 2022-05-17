@@ -60,4 +60,10 @@ class GatewayRepository {
             }
         }
     }
+
+    suspend fun retrieveGateways(href: String) : Flow<LoadingResource<List<Gateway>>>{
+
+    }
+
+
 }

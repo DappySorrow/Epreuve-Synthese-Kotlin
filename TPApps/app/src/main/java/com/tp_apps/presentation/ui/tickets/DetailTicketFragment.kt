@@ -75,7 +75,7 @@ class DetailTicketFragment : Fragment(R.layout.fragment_detail_ticket) {
 
                     val ticket = it.data!!
 
-                    gatewaysRecyclerViewAdapter.gateways = it.data.customer.listGateway
+                    gatewaysRecyclerViewAdapter.gateways = it.data.customer.gateways
                     gatewaysRecyclerViewAdapter.notifyAllItemChanged()
 
                     binding.txvTicketId.text = ticket.ticketNumber
