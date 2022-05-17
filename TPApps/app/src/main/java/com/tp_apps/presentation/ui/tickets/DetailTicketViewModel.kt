@@ -12,6 +12,8 @@ import com.tp_apps.helpers.LoadingResource
 import com.tp_apps.helpers.Resource
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.json.Json
 
 class DetailTicketViewModel(private val href: String) : ViewModel() {
 
@@ -30,13 +32,8 @@ class DetailTicketViewModel(private val href: String) : ViewModel() {
 //-------------------------------------------------------------------------------------------------
 
     fun addGateway(rawValue: String, href: String) {
-        val gatewayInfos = rawValue.splitToSequence('"').toList()
-        val serialNumber = gatewayInfos.elementAt(3)
-        val revision = gatewayInfos.elementAt(7)
-        val pin = gatewayInfos.elementAt(11)
-        val hash = gatewayInfos.elementAt(15)
 
-        val borne = Borne(serialNumber, revision, pin, hash)
+        val borne : Borne = Json.decodeFromString(rawValue)
 
         viewModelScope.launch {
             //Ajouter le gateway au client
@@ -46,8 +43,6 @@ class DetailTicketViewModel(private val href: String) : ViewModel() {
             gatewayRepository.retrieveCustomerGatewaysNow(href).collect {
                 _gateways.value = it
             }
-
-
         }
     }
 
