@@ -11,29 +11,33 @@ import com.tp_apps.domain.models.Gateway
 import com.tp_apps.helpers.ColorHelper
 
 class GatewaysRecyclerViewAdapter(
-    var gateways : List<Gateway> = listOf(),
-    private val onGatewayClick: (Gateway) -> Unit) : RecyclerView.Adapter<GatewaysRecyclerViewAdapter.ViewHolder>(){
+    var gateways: List<Gateway> = listOf(),
+    private val onGatewayClick: (Gateway) -> Unit
+) : RecyclerView.Adapter<GatewaysRecyclerViewAdapter.ViewHolder>() {
 
     inner class ViewHolder(private val binding: ItemGatewaysBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(gateway: Gateway) {
 
-            val status = gateway.connection.status
+            var online : Boolean = false
+
+            if (gateway.connection.status == "Online") {
+                online = true
+            }
 
             //Recevoir le context pour bond les strings
             val context = binding.root.context
 
-            if (status == "Online")
-            {
-                binding.chipStatus.chipBackgroundColor = ColorHelper.connectionStatusColor(binding.root.context,gateway.connection.status)
+            if (online) {
                 binding.chipStatus.text = context.getText(R.string.Online)
-                binding.txvLatence.text = context.getString(R.string.ns, gateway.connection.ping.toString())
-                binding.txvDownload.text = context.getString(R.string.Ebps, gateway.connection.download.toString())
-                binding.txvUpload.text = context.getString(R.string.Ebps, gateway.connection.upload.toString())
-                binding.txvTicketId.text = gateway.serialNumber
-            }
-            else{
-                binding.chipStatus.chipBackgroundColor = ColorHelper.connectionStatusColor(binding.root.context,gateway.connection.status)
+                binding.txvLatence.text =
+                    context.getString(R.string.ns, gateway.connection.ping.toString())
+                binding.txvDownload.text =
+                    context.getString(R.string.Ebps, gateway.connection.download.toString())
+                binding.txvUpload.text =
+                    context.getString(R.string.Ebps, gateway.connection.upload.toString())
+
+            } else {
                 binding.chipStatus.text = context.getText(R.string.Offline)
                 binding.txvOffline.visibility = View.VISIBLE
                 binding.txvLatence.visibility = View.INVISIBLE
@@ -42,15 +46,24 @@ class GatewaysRecyclerViewAdapter(
                 binding.imvDownload.visibility = View.INVISIBLE
                 binding.imvLatence.visibility = View.INVISIBLE
                 binding.imvUpload.visibility = View.INVISIBLE
-                binding.txvTicketId.text = gateway.serialNumber
             }
+
+            binding.txvTicketId.text = gateway.serialNumber
+            binding.chipStatus.chipBackgroundColor =
+                ColorHelper.connectionStatusColor(binding.root.context, gateway.connection.status)
         }
     }
 
     //==========================================================================
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(ItemGatewaysBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        return ViewHolder(
+            ItemGatewaysBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -62,6 +75,6 @@ class GatewaysRecyclerViewAdapter(
         }
     }
 
-    override fun getItemCount()= gateways.size
+    override fun getItemCount() = gateways.size
 
 }
