@@ -115,10 +115,11 @@ class DetailTicketFragment : Fragment(R.layout.fragment_detail_ticket) {
 
                     binding.chipHaut.chipBackgroundColor =
                         ticketPriorityColor(requireContext(), ticket.priority)
-                    binding.chipBas.chipBackgroundColor =
-                        ticketStatusColor(requireContext(), ticket.status)
                     binding.chipHaut.text = ticket.priority
-                    binding.chipBas.text = ticket.status
+
+                    /*binding.chipBas.chipBackgroundColor =
+                        ticketStatusColor(requireContext(), ticket.status)
+                    binding.chipBas.text = ticket.status*/
 
 
 
@@ -137,7 +138,28 @@ class DetailTicketFragment : Fragment(R.layout.fragment_detail_ticket) {
                         ticket.customer.coord.longitude.toDouble()
                     )
 
+                    with(binding){
+                        chipBas.text = ticket.status
+                        chipBas.chipBackgroundColor = ticketStatusColor(requireContext(), ticket.status)
+                    }
 
+                    //Solve and Open a ticket !!
+                    when (Constants.TicketStatus.valueOf(ticket.status)) {
+                        Constants.TicketStatus.Open -> {
+                            with(binding) {
+                                buttonSolve.visibility = View.VISIBLE
+                                buttonInstall.visibility = View.VISIBLE
+                                buttonOpen!!.visibility = View.INVISIBLE
+                            }
+                        }
+                        Constants.TicketStatus.Solved -> {
+                            with(binding){
+                                buttonSolve.visibility = View.INVISIBLE
+                                buttonInstall.visibility = View.INVISIBLE
+                                buttonOpen!!.visibility = View.VISIBLE
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -148,6 +170,14 @@ class DetailTicketFragment : Fragment(R.layout.fragment_detail_ticket) {
             quickieActivityLauncher.launch(null)
         }
 
+        binding.buttonSolve.setOnClickListener{
+            viewModel.solveATicket()
+        }
+
+        binding.buttonOpen!!.setOnClickListener {
+            viewModel.openATicket()
+        }
+
         binding.floatingActionButton.setOnClickListener {
             val action = DetailTicketFragmentDirections
                 .actionDetailTicketFragmentToMapsActivity(position!!)
@@ -155,6 +185,8 @@ class DetailTicketFragment : Fragment(R.layout.fragment_detail_ticket) {
         }
 
     }
+
+
 
     //----------------------------------------------------------------------------------------------------------
 

@@ -8,6 +8,8 @@ import com.tp_apps.domain.models.Borne
 import com.tp_apps.domain.models.Gateway
 import com.tp_apps.domain.models.Ticket
 import com.tp_apps.helpers.Constants
+import com.tp_apps.helpers.Constants.TICKET_STATUS_OPEN
+import com.tp_apps.helpers.Constants.TICKET_STATUS_SOLVE
 import com.tp_apps.helpers.LoadingResource
 import com.tp_apps.helpers.Resource
 import kotlinx.coroutines.flow.collect
@@ -43,6 +45,21 @@ class DetailTicketViewModel(private val href: String) : ViewModel() {
             gatewayRepository.retrieveCustomerGatewaysNow(href).collect {
                 _gateways.value = it
             }
+        }
+    }
+
+    //-------------------------------------------------------------------------------------------------
+
+
+    fun solveATicket() {
+        viewModelScope.launch {
+            _ticket.value = ticketRepository.changedStatus(href, TICKET_STATUS_SOLVE)
+        }
+    }
+
+    fun openATicket() {
+        viewModelScope.launch {
+            _ticket.value = ticketRepository.changedStatus(href, TICKET_STATUS_OPEN)
         }
     }
 

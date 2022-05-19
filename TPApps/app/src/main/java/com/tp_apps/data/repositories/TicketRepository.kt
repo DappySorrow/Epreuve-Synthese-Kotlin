@@ -1,6 +1,8 @@
 package com.tp_apps.data.repositories
 
 import com.tp_apps.data.datasources.TicketDataSource
+import com.tp_apps.domain.models.Borne
+import com.tp_apps.domain.models.Gateway
 import com.tp_apps.domain.models.Ticket
 import com.tp_apps.helpers.Constants
 import com.tp_apps.helpers.LoadingResource
@@ -45,6 +47,14 @@ class TicketRepository {
     suspend fun retrieveOne(href: String): Resource<Ticket> {
         return try {
             Resource.Success(ticketDataSource.retrieveOne(href))
+        } catch (ex: Exception) {
+            Resource.Error(ex, ex.message)
+        }
+    }
+
+    suspend fun changedStatus(href: String, status : String): Resource<Ticket> {
+        return try {
+            Resource.Success(ticketDataSource.changedStatus(href, status))
         } catch (ex: Exception) {
             Resource.Error(ex, ex.message)
         }

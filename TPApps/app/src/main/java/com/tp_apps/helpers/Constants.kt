@@ -13,6 +13,8 @@ object Constants {
 
     }
 
+    const val TICKET_STATUS_SOLVE = "solve"
+    const val TICKET_STATUS_OPEN = "open"
     const val GATEWAY_LOADING = 1000L
     const val TIMER_MAX = 1000L
     const val TIMER_INTERVAL = 1000L
