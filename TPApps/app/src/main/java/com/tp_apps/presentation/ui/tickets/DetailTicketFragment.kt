@@ -174,7 +174,7 @@ class DetailTicketFragment : Fragment(R.layout.fragment_detail_ticket) {
             viewModel.solveATicket()
         }
 
-        binding.buttonOpen!!.setOnClickListener {
+        binding.buttonOpen.setOnClickListener {
             viewModel.openATicket()
         }
 

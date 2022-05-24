@@ -33,7 +33,7 @@
     <fragment
         android:id="@+id/detailTicketFragment"
         android:name="com.tp_apps.presentation.ui.tickets.DetailTicketFragment"
-        android:label="DetailTicketFragment"
+        android:label="@string/DetailTicket"
         tools:layout="@layout/fragment_detail_ticket">
         <argument
             android:name="href"
@@ -48,8 +48,8 @@
     <fragment
         android:id="@+id/detailGatewayFragment"
         android:name="com.tp_apps.presentation.ui.gateways.DetailGatewayFragment"
-        android:label="fragment_detail_gateway"
-        tools:layout="@layout/fragment_detail_gateway" >
+        android:label="@string/DetailGateway"
+        tools:layout="@layout/fragment_detail_gateway">
         <argument
             android:name="href"
             app:argType="string" />

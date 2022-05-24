@@ -163,21 +163,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Gateways"
+        android:text="@string/gateways"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/topTxview"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/buttonSolve"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="@string/Solve"
-        app:layout_constraintEnd_toEndOf="@+id/cardView"
-        app:layout_constraintStart_toStartOf="@+id/cardView"
-        app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
     <Button
         android:id="@+id/buttonInstall"
@@ -185,6 +175,27 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:text="@string/Install"
+        app:layout_constraintEnd_toEndOf="@+id/cardView"
+        app:layout_constraintStart_toStartOf="@+id/cardView"
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
+    <Button
+        android:id="@+id/buttonOpen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/open"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonSolve"
+        app:layout_constraintEnd_toStartOf="@+id/buttonSolve"
+        app:layout_constraintStart_toEndOf="@+id/buttonInstall"
+        app:layout_constraintTop_toTopOf="@+id/buttonSolve" />
+
+    <Button
+        android:id="@+id/buttonSolve"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/Solve"
         app:layout_constraintEnd_toEndOf="@+id/rcvGatewaysTicket"
         app:layout_constraintStart_toStartOf="@+id/rcvGatewaysTicket"
         app:layout_constraintTop_toBottomOf="@+id/rcvGatewaysTicket" />

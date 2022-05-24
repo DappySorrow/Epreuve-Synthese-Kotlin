@@ -17,4 +17,8 @@
     <string name="next_reboot_at">Prochain redémarrage :</string>
     <string name="last_update">Dernière mise à jour :</string>
     <string name="gateways">Passerelles</string>
+    <string name="open">Ouvrir</string>
+    <string name="online_gateway">En Ligne</string>
+    <string name="DetailTicket">Détail d\'un ticket</string>
+    <string name="DetailGateway">Détail d\'une passerelle</string>
 </resources>
