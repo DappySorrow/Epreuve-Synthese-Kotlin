@@ -216,7 +216,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginBottom="16dp"
                 android:src="@drawable/element_b"
-                app:layout_constraintBottom_toTopOf="@+id/textView12"
+                app:layout_constraintBottom_toTopOf="@+id/txvKernelVersion"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <ImageView
