@@ -12,4 +12,9 @@
     <string name="Install">Installer</string>
     <string name="Installation_Good">Installation complétée</string>
     <string name="Installation_Bad">Erreur lors de l\'Installation</string>
+    <string name="update">mettre à jour</string>
+    <string name="reboot">redémarrer</string>
+    <string name="next_reboot_at">Prochain redémarrage :</string>
+    <string name="last_update">Dernière mise à jour :</string>
+    <string name="gateways">Passerelles</string>
 </resources>

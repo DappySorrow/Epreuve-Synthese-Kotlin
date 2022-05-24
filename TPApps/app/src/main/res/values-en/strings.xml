@@ -12,4 +12,9 @@
     <string name="Solve">Solve</string>
     <string name="Installation_Good">Installation completed</string>
     <string name="Installation_Bad">Installation error</string>
+    <string name="update">UPDATE</string>
+    <string name="reboot">REBOOT</string>
+    <string name="next_reboot_at">Next reboot at :</string>
+    <string name="last_update">Last update :</string>
+    <string name="gateways">Gateways</string>
 </resources>

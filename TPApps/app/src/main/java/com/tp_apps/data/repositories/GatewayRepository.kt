@@ -77,9 +77,9 @@ class GatewayRepository {
         }
     }
 
-    suspend fun ChangeGateway(href: String, status : String): Resource<Ticket> {
+    suspend fun changeGateway(href: String, status : String): Resource<Gateway> {
         return try {
-            Resource.Success(gatewayDataSource.changedStatus(href, status))
+            Resource.Success(gatewayDataSource.changeGateway(href, status))
         } catch (ex: Exception) {
             Resource.Error(ex, ex.message)
         }

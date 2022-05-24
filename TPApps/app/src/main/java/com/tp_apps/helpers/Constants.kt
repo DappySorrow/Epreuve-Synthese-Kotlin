@@ -15,6 +15,8 @@ object Constants {
 
     const val TICKET_STATUS_SOLVE = "solve"
     const val TICKET_STATUS_OPEN = "open"
+    const val GATEWAY_CHANGE_REBOOT= "reboot"
+    const val GATEWAY_CHANGE_UPDATE= "update"
     const val GATEWAY_LOADING = 1000L
     const val TIMER_MAX = 1000L
     const val TIMER_INTERVAL = 1000L
@@ -39,8 +41,6 @@ object Constants {
         Online, Offline
     }
 
-    enum class ChangeGateway{
-        Reboot, Update
-    }
+
 
 }

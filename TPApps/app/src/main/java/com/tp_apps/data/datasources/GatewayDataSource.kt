@@ -66,13 +66,12 @@ class GatewayDataSource {
         }
     }
 
-    suspend fun ChangeGateway(href: String, status : String): Ticket {
+    suspend fun changeGateway(href: String, status : String): Gateway {
         return withContext(Dispatchers.IO) {
-            //val body = json.encodeToString(borne)
             val (_, _, result) = "${href}/actions?type=${status}".httpPost().responseJson()
             when (result) {
                 is Result.Success -> {
-                    return@withContext json.decodeFromString<Ticket>(result.value.content)
+                    return@withContext json.decodeFromString<Gateway>(result.value.content)
                 }
                 is Result.Failure -> {
                     throw result.error.exception

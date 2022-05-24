@@ -21,8 +21,8 @@ class DetailGatewayFragment : Fragment(R.layout.fragment_detail_gateway) {
     private val args : DetailGatewayFragmentArgs by navArgs()
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         binding.btnReboot.setOnClickListener{
             viewModel.rebootAGateway()
@@ -30,8 +30,6 @@ class DetailGatewayFragment : Fragment(R.layout.fragment_detail_gateway) {
         binding.btnUpdate.setOnClickListener{
             viewModel.updateAGateway()
         }
-
-
     }
 
 

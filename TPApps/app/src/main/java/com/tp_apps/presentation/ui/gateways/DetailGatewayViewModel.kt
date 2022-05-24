@@ -4,6 +4,8 @@ import androidx.lifecycle.*
 import com.tp_apps.data.repositories.GatewayRepository
 import com.tp_apps.domain.models.Gateway
 import com.tp_apps.helpers.Constants
+import com.tp_apps.helpers.Constants.GATEWAY_CHANGE_REBOOT
+import com.tp_apps.helpers.Constants.GATEWAY_CHANGE_UPDATE
 import com.tp_apps.helpers.Resource
 import kotlinx.coroutines.launch
 
@@ -16,13 +18,13 @@ class DetailGatewayViewModel(private val href:String) : ViewModel() {
 
      fun rebootAGateway(){
         viewModelScope.launch {
-            _gateway.value = gatewayRepository.ChangeGateway(href,Constants.ChangeGateway.Reboot)
+            _gateway.value = gatewayRepository.changeGateway(href, GATEWAY_CHANGE_REBOOT)
         }
     }
 
     fun updateAGateway(){
         viewModelScope.launch {
-            _gateway.value = gatewayRepository.ChangeGateway(href,Constants.ChangeGateway.Update)
+            _gateway.value = gatewayRepository.changeGateway(href,GATEWAY_CHANGE_UPDATE)
         }
     }
 
