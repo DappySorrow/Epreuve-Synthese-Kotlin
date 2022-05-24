@@ -67,12 +67,206 @@
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18dp"
+                android:layout_marginTop="8dp"
 
-                tools:text="e2:7d:2b:6a:78:c9"
+                android:textSize="18dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txvTicketNumber" />
+                app:layout_constraintTop_toBottomOf="@+id/txvTicketNumber"
+                tools:text="e2:7d:2b:6a:78:c9" />
+
+            <TextView
+                android:id="@+id/lblSSID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView2"
+                tools:text="SSID:" />
+
+            <TextView
+                android:id="@+id/lblPIN"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="124dp"
+                tools:text="PIN:"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/lblSSID" />
+
+            <TextView
+                android:id="@+id/txvSSID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                tools:text="redundant.capacitor.COM"
+                app:layout_constraintStart_toEndOf="@+id/lblSSID"
+                app:layout_constraintTop_toTopOf="@+id/lblSSID" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                tools:text="60875c6d"
+                app:layout_constraintStart_toEndOf="@+id/lblPIN"
+                app:layout_constraintTop_toTopOf="@+id/lblPIN" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/secondCardView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="15dp"
+                app:layout_constraintBottom_toTopOf="@+id/txvHref"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lblSSID">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/txvIP"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:textSize="25dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="158.185.56.217" />
+
+                    <TextView
+                        android:id="@+id/txvPing"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:drawablePadding="10dp"
+                        android:textSize="20dp"
+                        app:drawableLeftCompat="@drawable/ic_baseline_sync_alt_24"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txvIP"
+                        tools:text="11 ns" />
+
+                    <TextView
+                        android:id="@+id/txvDownload"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:drawablePadding="10dp"
+                        android:textSize="25dp"
+                        app:drawableLeftCompat="@drawable/ic_outline_cloud_download_24"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txvPing"
+                        tools:text="47.576 Ebps" />
+
+                    <TextView
+                        android:id="@+id/txvUpload"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:drawablePadding="10dp"
+                        android:textSize="25dp"
+                        app:drawableLeftCompat="@drawable/ic_outline_cloud_upload_24"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txvDownload"
+                        tools:text="3.95 Ebps" />
+
+                    <TextView
+                        android:id="@+id/txvSignal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="16dp"
+                        android:drawablePadding="10dp"
+                        android:textSize="25dp"
+                        app:drawableLeftCompat="@drawable/ic_baseline_signal_cellular_alt_24"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txvUpload"
+                        tools:text="-25 dBm" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/txvHref"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toTopOf="@+id/imgElem1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.497"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="Href avec 10 text view" />
+
+            <ImageView
+                android:id="@+id/imgElem1"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="16dp"
+                android:src="@drawable/element_b"
+                app:layout_constraintBottom_toTopOf="@+id/textView12"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <ImageView
+                android:id="@+id/imgElem2"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:layout_marginStart="8dp"
+                android:src="@drawable/element_g"
+                app:layout_constraintStart_toEndOf="@+id/imgElem1"
+                app:layout_constraintTop_toTopOf="@+id/imgElem1" />
+
+            <ImageView
+                android:id="@+id/imgElem3"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:layout_marginStart="16dp"
+                android:src="@drawable/element_q"
+                app:layout_constraintStart_toEndOf="@+id/imgElem2"
+                app:layout_constraintTop_toTopOf="@+id/imgElem1" />
+
+            <ImageView
+                android:id="@+id/imgElem4"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:layout_marginStart="8dp"
+                android:src="@drawable/element_e"
+                app:layout_constraintStart_toEndOf="@+id/imgElem3"
+                app:layout_constraintTop_toTopOf="@+id/imgElem1" />
+
+            <ImageView
+                android:id="@+id/imgElem5"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/element_q"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imgElem4"
+                app:layout_constraintTop_toTopOf="@+id/imgElem1" />
+
+            <TextView
+                android:id="@+id/txvKernelVersion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="125dp"
+                android:textSize="18dp"
+                android:text="Kernel revision 19  Version 1.0.0"
+                app:layout_constraintBottom_toTopOf="@+id/btnReboot"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
