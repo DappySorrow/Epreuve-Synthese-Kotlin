@@ -15,6 +15,7 @@ import com.github.kittinunf.fuel.json.responseJson
 import com.github.kittinunf.result.success
 import com.tp_apps.data.datasources.GatewayDataSource
 import com.tp_apps.domain.models.Borne
+import com.tp_apps.domain.models.Ticket
 import com.tp_apps.helpers.LoadingResource
 import com.tp_apps.helpers.Resource
 import kotlinx.coroutines.delay
@@ -75,6 +76,15 @@ class GatewayRepository {
             }
         }
     }
+
+    suspend fun ChangeGateway(href: String, status : String): Resource<Ticket> {
+        return try {
+            Resource.Success(gatewayDataSource.changedStatus(href, status))
+        } catch (ex: Exception) {
+            Resource.Error(ex, ex.message)
+        }
+    }
+
 
 
 }

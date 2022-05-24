@@ -39,4 +39,8 @@ object Constants {
         Online, Offline
     }
 
+    enum class ChangeGateway{
+        Reboot, Update
+    }
+
 }
