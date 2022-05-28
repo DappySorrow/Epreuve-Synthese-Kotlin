@@ -1,10 +1,8 @@
 package com.tp_apps.presentation.adapters
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.tp_apps.R
 import com.tp_apps.databinding.ItemTicketBinding
 import com.tp_apps.domain.models.Ticket
 import com.tp_apps.helpers.ColorHelper

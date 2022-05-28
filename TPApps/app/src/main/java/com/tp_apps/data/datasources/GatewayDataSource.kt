@@ -1,7 +1,6 @@
 package com.tp_apps.data.datasources
 
-import android.util.Log
-import android.widget.Toast
+
 import com.github.kittinunf.fuel.core.extensions.jsonBody
 import com.github.kittinunf.fuel.httpGet
 import com.github.kittinunf.fuel.httpPost
@@ -9,13 +8,11 @@ import com.github.kittinunf.fuel.json.responseJson
 import com.github.kittinunf.result.Result
 import com.tp_apps.domain.models.*
 import com.tp_apps.helpers.Constants
-import com.tp_apps.helpers.Resource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
-import org.json.JSONObject
 
 class GatewayDataSource {
 

@@ -1,7 +1,6 @@
 package com.tp_apps.presentation.ui.gateways
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.viewbinding.library.fragment.viewBinding
 import android.widget.Toast

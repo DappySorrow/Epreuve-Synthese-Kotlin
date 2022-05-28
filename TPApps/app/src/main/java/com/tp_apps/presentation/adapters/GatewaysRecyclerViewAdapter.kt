@@ -1,6 +1,5 @@
 package com.tp_apps.presentation.adapters
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,7 +18,7 @@ class GatewaysRecyclerViewAdapter(
         RecyclerView.ViewHolder(binding.root) {
         fun bind(gateway: Gateway) {
 
-            //Recevoir le context pour bond les strings
+
             val context = binding.root.context
 
             if (gateway.connection.status == "Online") {

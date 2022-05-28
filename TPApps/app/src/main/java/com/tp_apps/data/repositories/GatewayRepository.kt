@@ -1,29 +1,16 @@
 package com.tp_apps.data.repositories
 
-import android.util.Log
-import com.github.kittinunf.fuel.core.extensions.jsonBody
-import com.github.kittinunf.result.Result
+
 import com.tp_apps.domain.models.Gateway
 import com.tp_apps.helpers.Constants
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
-import com.github.kittinunf.fuel.httpGet
-import com.github.kittinunf.fuel.httpPost
-import com.github.kittinunf.fuel.json.FuelJson
-import com.github.kittinunf.fuel.json.jsonDeserializer
-import com.github.kittinunf.fuel.json.responseJson
-import com.github.kittinunf.result.success
 import com.tp_apps.data.datasources.GatewayDataSource
 import com.tp_apps.domain.models.Borne
-import com.tp_apps.domain.models.Ticket
 import com.tp_apps.helpers.LoadingResource
 import com.tp_apps.helpers.Resource
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import kotlinx.serialization.decodeFromString
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
+
 
 class GatewayRepository {
     private val gatewayDataSource = GatewayDataSource()

@@ -2,14 +2,13 @@ package com.tp_apps.presentation.ui.gateways
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.viewbinding.library.fragment.viewBinding
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.tp_apps.R
 import com.tp_apps.databinding.FragmentDetailGatewayBinding
+import com.tp_apps.helpers.Constants
 import com.tp_apps.helpers.Resource
 
 class DetailGatewayFragment : Fragment(R.layout.fragment_detail_gateway) {
@@ -29,20 +28,35 @@ class DetailGatewayFragment : Fragment(R.layout.fragment_detail_gateway) {
             when(it){
                 is Resource.Error -> TODO()
                 is Resource.Success -> {
-                    val gateway = it!!.data
+                    val gateway = it.data
                     binding.chipsStatus.text = gateway!!.connection.status
+
+                // TODO BEN : Tu dois faire refresh le detail gateway
+                // tu peux t'inspirer du code de JS dans le DetailTicketFragment
+                // et dans la DetailTicketViewModel
+                    when (Constants.ConnectionStatus.valueOf(gateway.connection.status)) {
+                        Constants.ConnectionStatus.Online -> {
+                            with(binding) {
+                                chipsStatus.text = getString(R.string.Online)
+                                btnReboot.visibility = View.VISIBLE
+                                btnUpdate.visibility = View.VISIBLE
+                            }
+                        }
+                        Constants.ConnectionStatus.Offline -> {
+                            with(binding){
+                                chipsStatus.text = getString(R.string.Offline)
+                                binding.btnReboot.visibility = View.INVISIBLE
+                                binding.btnUpdate.visibility = View.INVISIBLE
+                            }
+                        }
+                    }
+
 
                 }
             }
         }
 
-       /* if(binding.chipsStatus.text == getString(R.string.online_gateway)){
-            binding.btnReboot.visibility = View.VISIBLE
-            binding.btnUpdate.visibility = View.VISIBLE
-        }else{
-            binding.btnReboot.visibility = View.INVISIBLE
-            binding.btnUpdate.visibility = View.INVISIBLE
-        }*/
+
 
 
         binding.btnReboot.setOnClickListener{

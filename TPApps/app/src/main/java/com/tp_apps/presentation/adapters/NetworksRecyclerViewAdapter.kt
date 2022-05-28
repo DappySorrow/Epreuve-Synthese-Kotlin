@@ -2,7 +2,6 @@ package com.tp_apps.presentation.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.res.TypedArrayUtils.getText
 import androidx.recyclerview.widget.RecyclerView
 import com.tp_apps.R
 import com.tp_apps.databinding.ItemNetworkBinding
@@ -40,7 +39,6 @@ class NetworksRecyclerViewAdapter(var networkNodes: List<NetworkNode> = listOf()
             binding.txvUpload.text = "${networkNodes.connection.upload.toString()} Ebps"
             binding.txvQualiteSignal.text = "${networkNodes.connection.signal.toString()} dBm"
 
-            //Recevoir le context pour bond les strings
             val context = binding.root.context
 
             if(networkNodes.connection.status == context.getText(R.string.Online_Server)){

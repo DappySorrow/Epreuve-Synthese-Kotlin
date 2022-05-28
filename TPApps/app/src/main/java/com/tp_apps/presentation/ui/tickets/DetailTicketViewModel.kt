@@ -1,13 +1,11 @@
 package com.tp_apps.presentation.ui.tickets
 
-import android.util.Log
 import androidx.lifecycle.*
 import com.tp_apps.data.repositories.GatewayRepository
 import com.tp_apps.data.repositories.TicketRepository
 import com.tp_apps.domain.models.Borne
 import com.tp_apps.domain.models.Gateway
 import com.tp_apps.domain.models.Ticket
-import com.tp_apps.helpers.Constants
 import com.tp_apps.helpers.Constants.TICKET_STATUS_OPEN
 import com.tp_apps.helpers.Constants.TICKET_STATUS_SOLVE
 import com.tp_apps.helpers.LoadingResource

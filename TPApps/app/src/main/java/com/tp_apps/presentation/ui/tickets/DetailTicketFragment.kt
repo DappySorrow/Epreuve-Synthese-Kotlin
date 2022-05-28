@@ -7,15 +7,12 @@ import android.viewbinding.library.fragment.viewBinding
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
 import com.google.android.gms.maps.model.LatLng
 import com.tp_apps.R
-import com.tp_apps.data.datasources.GatewayDataSource
 import com.tp_apps.data.repositories.GatewayRepository
 import com.tp_apps.databinding.FragmentDetailTicketBinding
 import com.tp_apps.domain.models.Gateway
@@ -25,7 +22,6 @@ import com.tp_apps.helpers.ColorHelper.ticketStatusColor
 import com.tp_apps.presentation.adapters.GatewaysRecyclerViewAdapter
 import com.tp_apps.presentation.ui.gateways.GatewaysFragmentDirections
 import io.github.g00fy2.quickie.QRResult
-import io.github.g00fy2.quickie.ScanCustomCode
 import io.github.g00fy2.quickie.ScanQRCode
 
 
@@ -116,11 +112,6 @@ class DetailTicketFragment : Fragment(R.layout.fragment_detail_ticket) {
                     binding.chipHaut.chipBackgroundColor =
                         ticketPriorityColor(requireContext(), ticket.priority)
                     binding.chipHaut.text = ticket.priority
-
-                    /*binding.chipBas.chipBackgroundColor =
-                        ticketStatusColor(requireContext(), ticket.status)
-                    binding.chipBas.text = ticket.status*/
-
 
 
                     binding.txvNomPrenomTicket.text =

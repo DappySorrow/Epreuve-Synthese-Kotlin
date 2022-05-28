@@ -3,7 +3,6 @@ package com.tp_apps.presentation.ui.gateways
 import androidx.lifecycle.*
 import com.tp_apps.data.repositories.GatewayRepository
 import com.tp_apps.domain.models.Gateway
-import com.tp_apps.helpers.Constants
 import com.tp_apps.helpers.Constants.GATEWAY_CHANGE_REBOOT
 import com.tp_apps.helpers.Constants.GATEWAY_CHANGE_UPDATE
 import com.tp_apps.helpers.Resource
@@ -27,7 +26,6 @@ class DetailGatewayViewModel(private val href:String) : ViewModel() {
             _gateway.value = gatewayRepository.changeGateway(href,GATEWAY_CHANGE_UPDATE)
         }
     }
-
 
 
     class Factory(private val href: String) : ViewModelProvider.Factory {
