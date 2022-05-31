@@ -39,30 +39,19 @@
                 android:id="@+id/btnReboot"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="36dp"
+                android:layout_marginStart="100dp"
                 android:text="@string/reboot"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txvKernelVersion" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chipsStatus"
-                android:layout_width="120dp"
-                android:layout_height="40dp"
-                android:text="Online"
-                android:textAlignment="center"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/txvSerialNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="25dp"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:textSize="20dp"
+                app:layout_constraintEnd_toStartOf="@+id/secondCardView"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/chipsStatus"
+                app:layout_constraintTop_toTopOf="parent"
                 tools:text="b3ef109c84b99c65" />
 
             <TextView
@@ -71,8 +60,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
 
-                android:textSize="18dp"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:textSize="16dp"
+                app:layout_constraintEnd_toStartOf="@+id/secondCardView"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txvSerialNumber"
                 tools:text="e2:7d:2b:6a:78:c9" />
@@ -91,8 +80,8 @@
                 android:id="@+id/lblPIN"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="124dp"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginStart="16dp"
+                app:layout_constraintStart_toEndOf="@+id/txvSSID"
                 app:layout_constraintTop_toTopOf="@+id/lblSSID"
                 tools:text="PIN:" />
 
@@ -109,24 +98,21 @@
                 android:id="@+id/txvPin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                app:layout_constraintEnd_toStartOf="@+id/secondCardView"
                 app:layout_constraintStart_toEndOf="@+id/lblPIN"
-                app:layout_constraintTop_toTopOf="@+id/lblPIN"
+                app:layout_constraintTop_toTopOf="@+id/lblSSID"
                 tools:text="60875c6d" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/secondCardView"
-                android:layout_width="0dp"
+                android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
                 android:layout_marginEnd="8dp"
                 app:cardCornerRadius="10dp"
                 app:cardElevation="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/lblSSID">
+                app:layout_constraintTop_toTopOf="parent">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -136,22 +122,22 @@
                         android:id="@+id/txvIP"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:textSize="25dp"
+                        android:layout_marginTop="8dp"
+                        android:textSize="20dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/chipsStatus"
                         tools:text="158.185.56.217" />
 
                     <TextView
                         android:id="@+id/txvPing"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="10dp"
                         android:drawablePadding="10dp"
-                        android:textSize="20dp"
+                        android:textSize="16dp"
                         app:drawableLeftCompat="@drawable/ic_baseline_sync_alt_24"
-                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/txvSignal"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/txvIP"
                         tools:text="11 ns" />
@@ -160,11 +146,14 @@
                         android:id="@+id/txvDownload"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="16dp"
                         android:drawablePadding="10dp"
-                        android:textSize="25dp"
+                        android:textSize="20dp"
                         app:drawableLeftCompat="@drawable/ic_outline_cloud_download_24"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.193"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/txvPing"
                         tools:text="47.576 Ebps" />
@@ -173,41 +162,49 @@
                         android:id="@+id/txvUpload"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
                         android:drawablePadding="10dp"
-                        android:textSize="25dp"
+                        android:textSize="20dp"
                         app:drawableLeftCompat="@drawable/ic_outline_cloud_upload_24"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/txvDownload"
+                        app:layout_constraintStart_toEndOf="@+id/txvDownload"
+                        app:layout_constraintTop_toTopOf="@+id/txvDownload"
                         tools:text="3.95 Ebps" />
 
                     <TextView
                         android:id="@+id/txvSignal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginBottom="16dp"
+                        android:layout_marginEnd="64dp"
                         android:drawablePadding="10dp"
-                        android:textSize="25dp"
+                        android:textSize="16dp"
                         app:drawableLeftCompat="@drawable/ic_baseline_signal_cellular_alt_24"
-                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/txvPing"
+                        tools:text="-25 dBm" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipsStatus"
+                        android:layout_width="120dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="16dp"
+                        android:text="Online"
+                        android:textAlignment="center"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/txvUpload"
-                        tools:text="-25 dBm" />
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/txvNA"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        tools:text="N/A"
                         android:textSize="35dp"
                         android:visibility="invisible"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="N/A" />
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
@@ -216,26 +213,25 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:textSize="20dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.497"
+                android:textSize="16dp"
+                app:layout_constraintEnd_toStartOf="@+id/secondCardView"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/secondCardView"
+                app:layout_constraintTop_toBottomOf="@+id/lblSSID"
                 tools:text="Href avec 10 text view" />
 
             <ImageView
                 android:id="@+id/imgElem1"
-                android:layout_width="65dp"
-                android:layout_height="65dp"
-                android:layout_marginStart="16dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="100dp"
                 android:src="@drawable/element_b"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txvHref" />
 
             <ImageView
                 android:id="@+id/imgElem2"
-                android:layout_width="65dp"
-                android:layout_height="65dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_marginStart="8dp"
                 android:src="@drawable/element_g"
                 app:layout_constraintStart_toEndOf="@+id/imgElem1"
@@ -243,8 +239,8 @@
 
             <ImageView
                 android:id="@+id/imgElem3"
-                android:layout_width="65dp"
-                android:layout_height="65dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_marginStart="16dp"
                 android:src="@drawable/element_q"
                 app:layout_constraintStart_toEndOf="@+id/imgElem2"
@@ -252,8 +248,8 @@
 
             <ImageView
                 android:id="@+id/imgElem4"
-                android:layout_width="65dp"
-                android:layout_height="65dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_marginStart="8dp"
                 android:src="@drawable/element_e"
                 app:layout_constraintStart_toEndOf="@+id/imgElem3"
@@ -261,12 +257,10 @@
 
             <ImageView
                 android:id="@+id/imgElem5"
-                android:layout_width="65dp"
-                android:layout_height="65dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginEnd="16dp"
                 android:src="@drawable/element_q"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imgElem4"
                 app:layout_constraintTop_toTopOf="@+id/imgElem1" />
 
@@ -276,10 +270,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="Kernel revision 19  Version 1.0.0"
-                android:textSize="18dp"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:textSize="16dp"
+                app:layout_constraintEnd_toStartOf="@+id/secondCardView"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imgElem1" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

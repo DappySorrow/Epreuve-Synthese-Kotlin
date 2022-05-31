@@ -64,6 +64,20 @@ class GatewayRepository {
         }
     }
 
+    suspend fun retrieveOneGateway(href: String): Flow<Resource<Gateway>> {
+        return flow {
+            while (true) {
+                try {
+                    delay(Constants.GATEWAY_LOADING)
+                    emit(Resource.Success(gatewayDataSource.retrieveOneGateway(href)))
+                } catch (ex: Exception) {
+                    emit(Resource.Error(ex, ex.message))
+                }
+                delay(Constants.REFRESH_GATEWAY_DELAY)
+            }
+        }
+    }
+
     suspend fun changeGateway(href: String, status : String): Resource<Gateway> {
         return try {
             Resource.Success(gatewayDataSource.changeGateway(href, status))
@@ -71,6 +85,8 @@ class GatewayRepository {
             Resource.Error(ex, ex.message)
         }
     }
+
+
 
 
 
