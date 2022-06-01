@@ -1,5 +1,6 @@
 package com.tp_apps.presentation.ui.gateways
 
+import android.graphics.Color
 import android.os.Bundle
 import android.provider.Contacts
 import androidx.fragment.app.Fragment
@@ -58,6 +59,27 @@ class DetailGatewayFragment : Fragment(R.layout.fragment_detail_gateway) {
                                 imgElem4!!.loadFromResource(binding.root.context, "element_${gateway.config.kernel[3].lowercase()}")
                                 imgElem5!!.loadFromResource(binding.root.context, "element_${gateway.config.kernel[4].lowercase()}")
                                 txvKernelVersion!!.text = "Kernel revision ${gateway.revision} Version ${gateway.config.version}"
+
+
+                                //TODO faire le putain de hash code en couleur
+
+                                /*for (item in gateway.hash) {
+                                    item.
+                                }*/
+                                /*for (item in gateway.hash) {
+                                    if (item < gateway.hash[2]) {
+                                        binding.txvHash0!!.text = gateway.hash
+                                    }
+                                    if (item >= gateway.hash[2] && item < gateway.hash[9]) {
+                                        var x = gateway.hash[2].toString().rangeTo(gateway.hash[9].toString())
+                                        var i : Int = Integer.parseInt(x)
+                                        binding.txvHash1!!.setBackgroundColor("#${i}")
+                                    }
+                                }*/
+
+
+
+
                                 btnReboot!!.visibility = View.VISIBLE
                                 btnUpdate!!.visibility = View.VISIBLE
                             }
