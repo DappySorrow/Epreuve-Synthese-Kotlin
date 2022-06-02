@@ -37,8 +37,7 @@ class DetailGatewayFragment : Fragment(R.layout.fragment_detail_gateway) {
                 }
                 is Resource.Success -> {
                     val gateway = it.data!!
-                    binding.chipsStatus!!.text = gateway!!.connection.status
-
+                    //binding.chipsStatus!!.text = gateway!!.connection.status
                     when (Constants.ConnectionStatus.valueOf(gateway.connection.status)) {
                         Constants.ConnectionStatus.Online -> {
                             with(binding) {
@@ -59,27 +58,18 @@ class DetailGatewayFragment : Fragment(R.layout.fragment_detail_gateway) {
                                 imgElem4!!.loadFromResource(binding.root.context, "element_${gateway.config.kernel[3].lowercase()}")
                                 imgElem5!!.loadFromResource(binding.root.context, "element_${gateway.config.kernel[4].lowercase()}")
                                 txvKernelVersion!!.text = "Kernel revision ${gateway.revision} Version ${gateway.config.version}"
-
-
-                                //TODO faire le putain de hash code en couleur
-
-                                /*for (item in gateway.hash) {
-                                    item.
-                                }*/
-                                /*for (item in gateway.hash) {
-                                    if (item < gateway.hash[2]) {
-                                        binding.txvHash0!!.text = gateway.hash
-                                    }
-                                    if (item >= gateway.hash[2] && item < gateway.hash[9]) {
-                                        var x = gateway.hash[2].toString().rangeTo(gateway.hash[9].toString())
-                                        var i : Int = Integer.parseInt(x)
-                                        binding.txvHash1!!.setBackgroundColor("#${i}")
-                                    }
-                                }*/
-
-
-
-
+                                binding.txvHash0!!.text = gateway.hash.substring(0,2)
+                                binding.txvHash1!!.setBackgroundColor(Color.parseColor("#" + gateway.hash.substring(2, 8)))
+                                binding.txvHash2!!.setBackgroundColor(Color.parseColor("#" + gateway.hash.substring(8, 14)))
+                                binding.txvHash3!!.setBackgroundColor(Color.parseColor("#" + gateway.hash.substring(14, 20)))
+                                binding.txvHash4!!.setBackgroundColor(Color.parseColor("#" + gateway.hash.substring(20, 26)))
+                                binding.txvHash5!!.setBackgroundColor(Color.parseColor("#" + gateway.hash.substring(26, 32)))
+                                binding.txvHash6!!.setBackgroundColor(Color.parseColor("#" + gateway.hash.substring(32, 38)))
+                                binding.txvHash7!!.setBackgroundColor(Color.parseColor("#" + gateway.hash.substring(38, 44)))
+                                binding.txvHash8!!.setBackgroundColor(Color.parseColor("#" + gateway.hash.substring(44, 50)))
+                                binding.txvHash9!!.setBackgroundColor(Color.parseColor("#" + gateway.hash.substring(50, 56)))
+                                binding.txvHash10!!.setBackgroundColor(Color.parseColor("#" + gateway.hash.substring(56, 62)))
+                                binding.txvHash11!!.text = gateway.hash.substring(62,64)
                                 btnReboot!!.visibility = View.VISIBLE
                                 btnUpdate!!.visibility = View.VISIBLE
                             }
@@ -94,6 +84,7 @@ class DetailGatewayFragment : Fragment(R.layout.fragment_detail_gateway) {
                                 txvMac!!.text = gateway.config.mac
                                 txvSSID!!.text = "SSID: ${gateway.config.SSID}"
                                 txvPin!!.text = "PIN: ${gateway.pin}"
+                                txvIP!!.visibility = View.INVISIBLE
                                 txvPing!!.visibility = View.INVISIBLE
                                 txvDownload!!.visibility = View.INVISIBLE
                                 txvUpload!!.visibility = View.INVISIBLE
@@ -106,22 +97,14 @@ class DetailGatewayFragment : Fragment(R.layout.fragment_detail_gateway) {
                                 imgElem4!!.loadFromResource(binding.root.context, "element_${gateway.config.kernel[3].lowercase()}")
                                 imgElem5!!.loadFromResource(binding.root.context, "element_${gateway.config.kernel[4].lowercase()}")
                                 txvKernelVersion!!.text = "Kernel revision ${gateway.revision} Version ${gateway.config.version}"
-                                btnReboot!!.visibility = View.VISIBLE
-                                btnUpdate!!.visibility = View.VISIBLE
                                 binding.btnReboot!!.visibility = View.INVISIBLE
                                 binding.btnUpdate!!.visibility = View.INVISIBLE
                             }
                         }
                     }
-
-
                 }
             }
         }
-
-
-
-
         binding.btnReboot!!.setOnClickListener{
             viewModel.rebootAGateway()
         }

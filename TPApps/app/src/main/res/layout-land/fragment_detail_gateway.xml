@@ -209,15 +209,137 @@
             </androidx.cardview.widget.CardView>
 
             <TextView
-                android:id="@+id/txvHref"
+                android:id="@+id/txvHash0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:textSize="16dp"
                 app:layout_constraintEnd_toStartOf="@+id/secondCardView"
+                app:layout_constraintHorizontal_bias="0.249"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/lblSSID"
-                tools:text="Href avec 10 text view" />
+                tools:text="12" />
+
+            <TextView
+                android:id="@+id/txvHash1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                app:layout_constraintEnd_toStartOf="@+id/secondCardView"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/txvHash0"
+                app:layout_constraintTop_toTopOf="@+id/txvHash0"
+                tools:text="12" />
+
+            <TextView
+                android:id="@+id/txvHash2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                app:layout_constraintEnd_toStartOf="@+id/secondCardView"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/txvHash1"
+                app:layout_constraintTop_toTopOf="@+id/txvHash0"
+                tools:text="12" />
+
+            <TextView
+                android:id="@+id/txvHash3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                app:layout_constraintEnd_toStartOf="@+id/secondCardView"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/txvHash2"
+                app:layout_constraintTop_toTopOf="@+id/txvHash0"
+                tools:text="12" />
+
+            <TextView
+                android:id="@+id/txvHash4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                app:layout_constraintEnd_toStartOf="@+id/secondCardView"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/txvHash3"
+                app:layout_constraintTop_toTopOf="@+id/txvHash0"
+                tools:text="12" />
+
+            <TextView
+                android:id="@+id/txvHash5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                app:layout_constraintEnd_toStartOf="@+id/secondCardView"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/txvHash4"
+                app:layout_constraintTop_toTopOf="@+id/txvHash0"
+                tools:text="12" />
+
+            <TextView
+                android:id="@+id/txvHash6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                app:layout_constraintEnd_toStartOf="@+id/secondCardView"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/txvHash5"
+                app:layout_constraintTop_toTopOf="@+id/txvHash0"
+                tools:text="12" />
+
+            <TextView
+                android:id="@+id/txvHash7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                app:layout_constraintEnd_toStartOf="@+id/secondCardView"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/txvHash6"
+                app:layout_constraintTop_toTopOf="@+id/txvHash0"
+                tools:text="12" />
+
+            <TextView
+                android:id="@+id/txvHash8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                app:layout_constraintEnd_toStartOf="@+id/secondCardView"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/txvHash7"
+                app:layout_constraintTop_toTopOf="@+id/txvHash0"
+                tools:text="12" />
+
+            <TextView
+                android:id="@+id/txvHash9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                app:layout_constraintEnd_toStartOf="@+id/secondCardView"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/txvHash8"
+                app:layout_constraintTop_toTopOf="@+id/txvHash0"
+                tools:text="12" />
+
+            <TextView
+                android:id="@+id/txvHash10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                app:layout_constraintEnd_toStartOf="@+id/secondCardView"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/txvHash9"
+                app:layout_constraintTop_toTopOf="@+id/txvHash0"
+                tools:text="12" />
+
+            <TextView
+                android:id="@+id/txvHash11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                app:layout_constraintEnd_toStartOf="@+id/secondCardView"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/txvHash10"
+                app:layout_constraintTop_toTopOf="@+id/txvHash0"
+                tools:text="12" />
 
             <ImageView
                 android:id="@+id/imgElem1"
@@ -226,7 +348,7 @@
                 android:layout_marginStart="100dp"
                 android:src="@drawable/element_b"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txvHref" />
+                app:layout_constraintTop_toBottomOf="@+id/txvHash0" />
 
             <ImageView
                 android:id="@+id/imgElem2"
